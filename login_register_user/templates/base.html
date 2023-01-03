@@ -16,15 +16,26 @@
 
     <!--Navbar-->
     <nav>
-        <i class="fa-sharp fa-solid fa-landmark"></i>
+        <a href="{% url 'home' %}"><i class="fa-sharp fa-solid fa-landmark"></i></a>
         <ul>
+            {% if user.is_authenticated %}
             <li>
-                <a href="#">
+                <a href="#">{{user}}</a>
+            </li>
+            <li>
+                <a href="#">Meu cadastro</a>
+            </li>
+            <li>
+                <a href="{% url 'logout' %}">Sair</a>
+            </li>
+            {% else %}
+            <li>
+                <a href="{% url 'login' %}">
                     Entrar
                 </a>
             </li>
             <li>
-                <a href="#">
+                <a href="{% url 'register' %}">
                     Cadastrar
                 </a>
             </li>
@@ -33,15 +44,23 @@
                     Sobre
                 </a>
             </li>
+            {% endif %}
         </ul>
     </nav>
 
-    <br>
+    {% if messages %}
+        {% for message in messages %}
+        <div class="messages {{message.tags}}">
+            <span>{{ message }}</span>
+        </div>
+        {% endfor %}
+    {% endif %}
 
+    <br>
     <section>
-        <center>
-            <h1>Em construção</h1>
-        </center>
+        {% block 'content' %}
+
+        {% endblock %}
     </section>
 
 </body>

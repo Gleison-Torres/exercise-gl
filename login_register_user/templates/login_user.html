@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block 'content' %}
+
+    {% if user.is_authenticated %}
+        <br>
+        <center>
+            <h1>Você está logado com "{{user}}"</h1>
+        </center>
+    {% else %}
+        <br>
+        <center>
+            <form action="{% url 'login_create' %}" method="post">
+                {% csrf_token %}
+                {{form}}
+                <button type="submit">Enviar</button>
+            </form>
+        </center>
+    {% endif %}
+
+{% endblock %}

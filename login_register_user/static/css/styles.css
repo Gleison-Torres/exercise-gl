@@ -9,9 +9,6 @@
 
     body {
         font-family: sans-serif;
-        background-image: url("");
-        background-size: cover;
-        background-position-y: 70px;
     }
 
 /* Navbar */
@@ -19,6 +16,7 @@
         background-color: #4d004d;
         width: 100%;
         height: 70px;
+        color: #fff;
     }
 
     nav ul {
@@ -44,4 +42,22 @@
         color: #fff;
     }
 
+    .messages-container {
+        background: red;
+        text-align: center;
+        color: #fff;
+        padding: 20px;
+    }
 
+    .fa-circle-user {
+        font-size: 35px;
+        padding: 10px;
+        padding-left: 1080px;
+    }
+
+    .message-success {
+        text-align: center;
+        background-color: #4dff4d;
+        color: #fff;
+        padding: 20px;
+    }
