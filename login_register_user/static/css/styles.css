@@ -17,8 +17,12 @@
         width: 100%;
         height: 70px;
         color: #fff;
+        position: fixed;
+        top: 0;
+        left: 0;
     }
 
+/* Menu Navbar */
     nav ul {
         float: right;
         margin-right: 40px;
@@ -42,6 +46,7 @@
         color: #fff;
     }
 
+/* Mensagens */
     .messages-container {
         background: red;
         text-align: center;
@@ -60,4 +65,70 @@
         background-color: #4dff4d;
         color: #fff;
         padding: 20px;
+    }
+
+/* Formulário de cadastro */
+    .form-register-container {
+        background-color: #4d004d;
+        text-align: center;
+        width: 320px;
+        padding: 40px;
+        border-radius: 30px;
+        margin: auto;
+        color: #fff;
+        margin-top: 100px;
+    }
+
+    .input-container {
+        padding: 5px;
+    }
+
+    .labels-register {
+        padding: 7px;
+    }
+
+    .input-register input{
+        width: 190px;
+        border-radius: 10px;
+        padding: 3px;
+    }
+
+
+/* Formulário de login*/
+    .login-container {
+        background-color: #4d004d;
+        color: #fff;
+        width: 320px;
+        margin: 0 auto;
+        margin-top: 200px;
+        padding: 50px;
+        border-radius: 30px;
+        label: 10px;
+    }
+
+    .labels-login {
+        padding: 7px;
+    }
+
+    .input-login input {
+        width: 190px;
+        border-radius: 10px;
+        padding: 3px;
+    }
+
+/* Botões */
+    .btn-register {
+        width: 110px;
+        padding: 5px;
+        border-radius: 10px;
+        margin-top: 30px;
+        margin-left: 5px;
+    }
+
+    .btn-login {
+        width: 110px;
+        padding: 5px;
+        border-radius: 10px;
+        margin-top: 30px;
+        margin-left: 5px;
     }

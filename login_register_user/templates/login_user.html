@@ -8,14 +8,23 @@
             <h1>Você está logado com "{{user}}"</h1>
         </center>
     {% else %}
-        <br>
-        <center>
-            <form action="{% url 'login_create' %}" method="post">
-                {% csrf_token %}
-                {{form}}
-                <button type="submit">Enviar</button>
-            </form>
-        </center>
+        <div class="login-container">
+            <center>
+                <form action="{% url 'login_create' %}" method="post">
+                    {% csrf_token %}
+                    {% for form in forms %}
+                        <div class="labels-login">{{form.label}}</div>
+                        <div class="input-login">
+                            {{form}}
+                        </div>
+                    {% endfor %}
+                    {{form}}
+                    <div class="button-login">
+                        <button class="btn-login" type="submit">Enviar</button>
+                    </div>
+                </form>
+            </center>
+        </div>
     {% endif %}
 
 {% endblock %}

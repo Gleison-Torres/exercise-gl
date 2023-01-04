@@ -10,8 +10,7 @@ def index(request):
 
 
 def login_user(request):
-    form = forms.LoginForm()
-    return render(request, 'login_user.html', {'form': form})
+    return render(request, 'login_user.html', {'forms': forms.LoginForm()})
 
 
 def login_create(request):
@@ -44,4 +43,7 @@ def logout_user(request):
 
 
 def register_user(request):
-    return render(request, 'register_user.html')
+    context = {
+        'forms': forms.RegisterForm()
+    }
+    return render(request, 'register_user.html', context)
