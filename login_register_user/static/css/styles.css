@@ -20,6 +20,7 @@
         position: fixed;
         top: 0;
         left: 0;
+        font-weight: bold;
     }
 
 /* Menu Navbar */
@@ -48,10 +49,9 @@
 
 /* Mensagens */
     .messages-container {
-        background: red;
         text-align: center;
-        color: #fff;
         padding: 20px;
+        background-color:red;
     }
 
     .fa-circle-user {
@@ -61,10 +61,13 @@
     }
 
     .message-success {
+        margin-top: 0px;
         text-align: center;
         background-color: #4dff4d;
         color: #fff;
         padding: 20px;
+        border-radius: 20px;
+        font-weight: bold;
     }
 
 /* Formulário de cadastro */

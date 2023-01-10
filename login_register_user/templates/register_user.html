@@ -3,7 +3,7 @@
 
 {% block 'content' %}
     <div class="form-register-container">
-        <form action="{% url 'register' %}" method="post">
+        <form action="{% url 'register_validation' %}" method="post">
             {% csrf_token %}
             <div class="form-register">
                 {% for form in forms %}
@@ -14,7 +14,11 @@
                         <div class="input-register">
                             {{form}}
                         </div>
+                        <p>{{form.errors}}</p>
+
+
                     </div>
+
                 {% endfor %}
             </div>
             <div class="button-register">

@@ -43,7 +43,26 @@ def logout_user(request):
 
 
 def register_user(request):
+
+    register = request.session.get('register_form_data')
     context = {
-        'forms': forms.RegisterForm()
+        'forms': forms.RegisterForm(register)
     }
+
     return render(request, 'register_user.html', context)
+
+
+def register_user_validation(request):
+    if not request.POST:
+        raise Http404('Página não encontrada!')
+
+    request.session['register_form_data'] = request.POST
+    form = forms.RegisterForm(request.POST)
+    if form.is_valid():
+        save_data = form.save(commit=True)
+        save_data.set_password(save_data.password)
+        save_data.save()
+        del(request.session['register_form_data'])
+        messages.success(request, 'Usuário cadastrado com sucesso!')
+
+    return redirect('register')
