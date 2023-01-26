@@ -70,6 +70,26 @@
         font-weight: bold;
     }
 
+    .message-error {
+        margin-top: 0px;
+        text-align: center;
+        background-color: red;
+        color: #fff;
+        padding: 20px;
+        border-radius: 20px;
+        font-weight: bold;
+    }
+
+    .message-info {
+        margin-top: 0px;
+        text-align: center;
+        background-color: red;
+        color: #fff;
+        padding: 20px;
+        border-radius: 20px;
+        font-weight: bold;
+    }
+
 /* Formulário de cadastro */
     .form-register-container {
         background-color: #4d004d;
@@ -79,7 +99,8 @@
         border-radius: 30px;
         margin: auto;
         color: #fff;
-        margin-top: 100px;
+        margin-top: 140px;
+        font-weight: bold;
     }
 
     .input-container {
@@ -107,6 +128,7 @@
         padding: 50px;
         border-radius: 30px;
         label: 10px;
+        font-weight: bold;
     }
 
     .labels-login {
