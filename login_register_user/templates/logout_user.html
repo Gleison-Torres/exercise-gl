@@ -1,5 +1,21 @@
 {% extends 'base.html' %}
 
 {% block 'content' %}
-
-[% endblock %]
+    <div class="logout-container">
+        <h1>Deseja sair?</h1>
+        <div class="form-container">
+            <form action="{% url 'home' %}" method="post">
+                {% csrf_token %}
+                <div class="btn-logout-container">
+                    <button id="btn-logout" type="submit">Não</button>
+                </div>
+            </form>
+            <form action="{% url 'logout' %}" method="post">
+                {% csrf_token %}
+                <div class="btn-back-container">
+                    <button id="btn-back" type="submit">Sim</button>
+                </div>
+            </form>
+        </div>
+    </div>
+{% endblock %}

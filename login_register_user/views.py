@@ -7,10 +7,13 @@ from . import forms
 
 
 def index(request):
-    return render(request, 'base.html')
+    return render(request, 'home.html')
 
 
 def register_user(request):
+    if request.user.is_authenticated:
+        return redirect('home')
+
     register = request.session.get('register_form_data')
     return render(request, 'register_user.html', {'forms': forms.RegisterForm(register)})
 
@@ -40,6 +43,9 @@ def register_user_validation(request):
 
 
 def login_user(request):
+    if request.user.is_authenticated:
+        return redirect('home')
+
     return render(request, 'login_user.html', {'forms': forms.LoginForm()})
 
 
@@ -57,16 +63,23 @@ def login_create(request):
         if authenticated_user is not None:
             login(request, authenticated_user)
             messages.success(request, 'Logado com sucesso!')
-            return redirect('login')
+            return redirect('home')
         else:
             messages.error(request, 'Usuário ou senha incorretos!')
             return redirect('login')
     else:
+        print('Erro no formulário!')
         messages.info(request, 'Algo deu errado, Tente novamente!')
         return redirect('login')
 
 
 def logout_user(request):
-    logout(request)
-    messages.info(request, 'Volte sempre!')
-    return redirect('login')
+    if request.method == 'POST':
+        logout(request)
+        return redirect('login')
+
+    if str(request.user) == 'AnonymousUser':
+        raise Http404('Página não encontrada!')
+
+    return render(request, 'logout_user.html')
+

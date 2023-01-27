@@ -133,4 +133,3 @@ MESSAGE_TAGS = {
     constants.WARNING: 'message-warning',
 }
 
-AUTHENTICATION_BACKENDS = ['django.contrib.auth.backends.ModelBackend']

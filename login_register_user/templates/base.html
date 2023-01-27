@@ -9,7 +9,7 @@
 
     <link rel="stylesheet" href="{% static 'css/styles.css' %}">
 
-    <title>Exercicio</title>
+    <title>{% block 'title' %}{% endblock %}</title>
 </head>
 
 <body>
@@ -39,11 +39,6 @@
                     Cadastrar
                 </a>
             </li>
-            <li>
-                <a href="#">
-                    Sobre
-                </a>
-            </li>
             {% endif %}
         </ul>
         {% if messages %}
@@ -62,6 +57,17 @@
         {% endblock %}
     </section>
 
+    <div class="footer-container">
+        <footer>
+            <div class="content-footer">
+                <p>Developer: Gleison torres</p>
+                <br>
+                <p>Github: <a href="https://github.com/Gleison-Torres" TARGET="_blank">Gleison-Torres</a></p>
+                <br>
+                <a href="https://www.linkedin.com/in/gleison-de-torres-loiola-a782051a2/" target="_blank">LinkedIn</a>
+            </div>
+        </footer>
+    </div>
 </body>
 
 </html>
