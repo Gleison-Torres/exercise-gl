@@ -5,8 +5,8 @@ from django.core.exceptions import ValidationError
 
 class RegisterForm(forms.ModelForm):
     password = forms.CharField(
-        required=True,
         label='Senha',
+        required=True,
         widget=forms.PasswordInput(attrs={'placeholder': 'Senha'}),
     )
 
@@ -16,6 +16,12 @@ class RegisterForm(forms.ModelForm):
         required=True,
     )
 
+    username = forms.CharField(
+        label='Usuário',
+        required=True,
+        widget=forms.TextInput(attrs={'placeholder': 'Usuário'})
+    )
+
     class Meta:
         model = User
         fields = ('first_name', 'last_name', 'username', 'email', 'password')
@@ -23,14 +29,12 @@ class RegisterForm(forms.ModelForm):
         labels = {
             'first_name': 'Nome',
             'last_name': 'Sobrenome',
-            'username': 'Usuário',
             'email': 'E-mail'
         }
 
         widgets = {
             'first_name': forms.TextInput(attrs={'placeholder': 'Nome'}),
             'last_name': forms.TextInput(attrs={'placeholder': 'Sobrenome'}),
-            'username': forms.TextInput(attrs={'placeholder': 'Usuário'}),
             'email': forms.EmailInput(attrs={'placeholder': 'E-mail'})
         }
 
@@ -48,8 +52,8 @@ class RegisterForm(forms.ModelForm):
         if password_1 == password_2:
             if len(password_1) < 8:
                 raise ValidationError({
-                    'password': 'A senha deve conter no mínimo 8 caracteres e uma letra maiúscula',
-                    'confirm_password': 'A senha deve conter no mínimo 8 caracteres e uma letra maiúscula'})
+                    'password': 'Mínimo 8 caracteres!',
+                    'confirm_password': 'Mínimo 8 caracteres!'})
 
             elif len(password_1) >= 8:
                 upper_char = 0  # Contador de letras maiúsculas na senha.
@@ -63,24 +67,29 @@ class RegisterForm(forms.ModelForm):
 
                 if upper_char == 0:
                     raise ValidationError(
-                        {'password': 'A senha deve conter pelo menos uma letra maiúscula!',
-                         'confirm_password': 'A senha deve conter pelo menos uma letra maiúscula!'})
+                        {'password': 'Use letras maiúsculas e minúsculas!',
+                         'confirm_password': 'Use letras maiúsculas e minúsculas! '})
 
                 if special_char == 0:
                     raise ValidationError(
-                        {'password': 'A senha deve conter caracteres especiais',
-                         'confirm_password': 'A senha deve conter caracteres especiais'})
+                        {'password': 'Use caracteres especiais!',
+                         'confirm_password': 'Use caracteres especiais!'})
+
+    def clean_email(self):
+        email_user = self.cleaned_data.get('email')
+        exist = User.objects.filter(email=email_user).exists()
+        if exist:
+            raise ValidationError('Este e-mail já está em uso!')
+        return email_user
 
     def clean_username(self):
         name_user = self.cleaned_data.get('username')
         exist = User.objects.filter(username=name_user).exists()
         if exist:
-            raise ValidationError('Usuário já existe!')
+            raise ValidationError('Nome de usuário já existe!')
         return name_user
 
 
 class LoginForm(forms.Form):
     username = forms.CharField(label='Usuário', widget=forms.TextInput(attrs={'placeholder': 'Nome de usuário'}))
     password = forms.CharField(label='Senha', widget=forms.PasswordInput(attrs={'placeholder': 'Senha'}))
-
-

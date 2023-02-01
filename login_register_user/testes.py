@@ -1,13 +1,6 @@
-variavel = 'ContEudo./'
-count_upper = 0
-count_char_special = 0
+from pycep_correios import get_address_from_cep, WebService
 
 
-for digito in variavel:
-    if digito.isupper():
-        count_upper += 1
+adress = get_address_from_cep('08431999', webservice=WebService.APICEP)
 
-    if digito in '#@$%¨&*()<>?.,/':
-        count_char_special += 1
-
-print(f'Numero de letras maiúsculas: {count_upper} e {count_char_special} caracteres especiais.')
+print(f'Endereço: {adress}')
