@@ -17,6 +17,7 @@
     <!--Navbar-->
     <nav>
         <a href="{% url 'home' %}"><i class="fa-sharp fa-solid fa-landmark"></i></a>
+
         <ul>
             {% if user.is_authenticated %}
             <li>
@@ -40,6 +41,7 @@
                 </a>
             </li>
             {% endif %}
+
         </ul>
         {% if messages %}
             {% for message in messages %}

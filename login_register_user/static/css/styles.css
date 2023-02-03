@@ -15,12 +15,10 @@
     nav {
         background-color: #4d004d;
         width: 100%;
-        height: 70px;
         color: #fff;
         position: fixed;
-        top: 0;
-        left: 0;
         font-weight: bold;
+        display: inline-block
     }
 
 /* Menu Navbar */
@@ -64,7 +62,7 @@
         margin-top: 0px;
         text-align: center;
         background-color: #4dff4d;
-        color: #fff;
+        color: black;
         padding: 20px;
         border-radius: 20px;
         font-weight: bold;
@@ -94,6 +92,7 @@
     .form-register-container {
         background-color: #4d004d;
         text-align: left;
+        justify-content: center;
         width: 820px;
         padding: 40px;
         border-radius: 30px;
@@ -209,7 +208,7 @@
     background-color: #4d004d;
     color: #fff;
     margin-top: 130px;
-    height: 240px;
+    height: 100%;
 }
 
 .content-footer {
