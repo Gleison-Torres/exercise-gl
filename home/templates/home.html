@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block 'title' %}Home{% endblock %}
+
+{% block 'content' %}
+    <div class="content-container">
+        {% if user.is_authenticated %}
+            <div class="admin-container">
+                <div class="admin-link">
+                    <a href="http://127.0.0.1:8000/admin/">Admin Django</a>
+                </div>
+            </div>
+        {% endif %}
+    </div>
+{% endblock %}

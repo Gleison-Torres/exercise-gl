@@ -6,10 +6,6 @@ from django.http import Http404
 from . import forms
 
 
-def index(request):
-    return render(request, 'home.html')
-
-
 def register_user(request):
     if request.user.is_authenticated:
         return redirect('home')

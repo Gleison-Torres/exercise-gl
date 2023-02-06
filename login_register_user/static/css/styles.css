@@ -9,7 +9,14 @@
 
     body {
         font-family: sans-serif;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
     }
+
+.site-content {
+    flex-grow: 1;
+}
 
 /* Navbar */
     nav {

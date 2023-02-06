@@ -8,6 +8,7 @@
           crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style_home.css' %}">
 
     <title>{% block 'title' %}{% endblock %}</title>
 </head>
@@ -53,11 +54,12 @@
     </nav>
 
     <br>
-    <section>
+    <div class="site-content">
         {% block 'content' %}
 
         {% endblock %}
-    </section>
+    </div>
+
 
     <div class="footer-container">
         <footer>
