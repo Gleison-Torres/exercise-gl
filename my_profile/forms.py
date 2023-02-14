@@ -11,5 +11,5 @@ class AddressForm(forms.ModelForm):
         )
 
         widgets = {
-            'type_address': forms.RadioSelect
+            'type_address': forms.RadioSelect,
         }

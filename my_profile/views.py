@@ -1,7 +1,7 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from . import models
 from . import forms
-from django.http import Http404
+from django.contrib import messages
 
 
 def my_profile(request):
@@ -18,7 +18,16 @@ def my_address(request):
 
 
 def add_address(request):
-    if request.method != 'POST':
-        raise Http404('Página não encontrada!')
-
-    return render(request, 'add_address.html', {'form_add_address': forms.AddressForm})
+    if request.method == 'POST':
+        form_add_address = forms.AddressForm(request.POST)
+        if form_add_address.is_valid():
+            pre_save_address = form_add_address.save(commit=False)
+            pre_save_address.user = request.user
+            pre_save_address.save()
+            messages.success(request, 'Endereço cadastrado com sucesso!')
+            return redirect('address')
+        else:
+            messages.error(request, 'Erro no preenchimento do formulário!')
+            return render(request, 'add_address.html', {'form_add_address': forms.AddressForm})
+    else:
+        return render(request, 'add_address.html', {'form_add_address': forms.AddressForm})

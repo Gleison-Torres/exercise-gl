@@ -86,7 +86,7 @@
 .empty-list-address {
     color: #fff;
     background-color: #4d004d;
-    width: 700px;
+    width: 720px;
     text-align: center;
     padding: 30px;
     border-radius: 20px;
@@ -170,15 +170,26 @@
 
 /* Buttons */
 
+.btn-add-address-container {
+    padding: 15px;
+    margin-top: 15px;
+}
+
+.btn-address-container {
+    margin-top: 10px;
+    padding: 20px;
+    text-align: center;
+}
+
 .btn-add-address {
     padding: 8px;
     width: 150px;
-    margin-top: 20px;
+    border: double;
     border-radius: 10px;
     font-weight: bold;
     font-size: 15px;
-    cursor: pointer;
     background: #e6e6ff;
+    color: #000000;
 }
 
 #btn-save-address {
@@ -190,18 +201,18 @@
     font-weight: bold;
 }
 
-.btn-address-container {
-    margin-top: 10px;
-    padding: 10px;
-    text-align: center;
-}
-
-
 /* Table */
+
+.table-container {
+    margin-top: 70px;
+    border: solid;
+    border-radius: 10px;
+}
 
 .header-address {
     background: #4d004d;
     color: #fff;
+    border-radius: 10px;
 }
 
 td, th {

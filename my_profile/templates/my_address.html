@@ -6,7 +6,7 @@
     <div class="address-container">
         <div class="my-address">
             {% if address %}
-                <table border="1">
+                <table border="1" class="table-container">
                     <thead class="header-address">
                         <tr>
                             <th>Nome (Destinatário)</th>
@@ -35,18 +35,14 @@
                     {% endfor %}
                 </table>
                 <div class="btn-address-container">
-                    <form action="{% url 'add-address' %}" method="post">
-                        {% csrf_token %}
-                        <button type="submit" class="btn-add-address">Add Endereço</button>
-                    </form>
+                    <a href="{% url 'add-address' %}" class="btn-add-address">Add Endereço</a>
                 </div>
             {% else %}
                 <div class="empty-list-address">
                     <h1>Você não tem endereços cadastrados!</h1>
-                    <form action="{% url 'add-address' %}" method="post">
-                        {% csrf_token %}
-                        <button type="submit" class="btn-add-address">Add Endereço</button>
-                    </form>
+                    <div class="btn-add-address-container">
+                        <a href="{% url 'add-address' %}" class="btn-add-address">Add Endereço</a>
+                    </div>
                 </div>
             {% endif %}
         </div>
