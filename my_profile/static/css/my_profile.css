@@ -1,0 +1,210 @@
+/* my_profile.html */
+
+.profile-container {
+    width: 100%;
+    margin-top: 120px;
+    text-align: center;
+    background-color: ;
+    height: 50vh;
+    margin-bottom: 50px;
+
+}
+
+.my-profile {
+    background-color: #4d004d;
+    padding: 20px;
+    width: 600px;
+    margin: 0 auto;
+    border-radius: 25px;
+    display: flex;
+    padding-left: 70px;
+}
+
+.fa-solid {
+    font-size: 40px;
+    color: #fff;
+}
+
+.user {
+    margin-left: 50px;
+    color: #fff;
+}
+
+
+.user-info {
+    background-color: #4d004d;
+    width: 600px;
+    margin: 0 auto;
+    margin-top: 25px;
+    text-align: left;
+    border-radius: 20px 20px 0px 0px;
+    padding: 20px;
+}
+
+.user-info i {
+    margin-left: 30px;
+}
+
+
+.info-button {
+    display: inline-block;
+    margin-left: 23px;
+}
+
+
+.user-address {
+    background-color: #4d004d;
+    width: 600px;
+    margin: 0 auto;
+    text-align: left;
+    border-radius: 0px 0px 20px 20px;
+    padding: 20px;
+}
+
+
+.info-address {
+    margin-left: 50px;
+}
+
+
+.address-button {
+    display: inline-block;
+    margin-left: 50px;
+}
+
+
+/* my_address.html */
+
+.address-container {
+    width: 100%;
+    height: 67vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.empty-list-address {
+    color: #fff;
+    background-color: #4d004d;
+    width: 700px;
+    text-align: center;
+    padding: 30px;
+    border-radius: 20px;
+}
+
+
+/* add_address.html */
+
+.add-address-container {
+    width: 100%;
+    height: 900px;;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.form-add-address {
+    background: #4d004d;
+    color: #fff;
+    width: 530px;
+    height: 80%;
+    margin-top: 30px;
+    padding: 40px;
+    border-radius: 25px;
+    display: flex-block;
+}
+
+#id_sender_name, #id_street_address {
+    display: block;
+    width: 100%;
+    padding: 5px;
+    border-radius: 10px;
+    margin-top: 5px;
+    margin-left: 7px;
+    margin-bottom: 15px;
+    label: 10px;
+}
+
+
+#id_postal_code, #id_number_address {
+    display: block;
+    margin-left: 7px;
+    padding: 5px;
+    border-radius: 10px;
+    margin-top: 5px;
+    margin-bottom: 15px;
+    width:30%;
+}
+
+
+#id_additional_info {
+    margin-left: 7px;
+    width: 100%;
+    display: block;
+    padding: 5px;
+    border-radius: 10px;
+    margin-top: 5px;
+    margin-bottom: 15px;
+}
+
+#id_city, #id_state {
+    margin-left: 7px;
+    width: 50%;
+    display: block;
+    padding: 5px;
+    border-radius: 10px;
+    margin-top: 5px;
+    margin-bottom: 15px;
+}
+
+#id_type_address {
+    margin-top: 8px;
+    margin-left:10px;
+}
+
+
+.labels {
+    margin-left: 10px;
+}
+
+
+/* Buttons */
+
+.btn-add-address {
+    padding: 8px;
+    width: 150px;
+    margin-top: 20px;
+    border-radius: 10px;
+    font-weight: bold;
+    font-size: 15px;
+    cursor: pointer;
+    background: #e6e6ff;
+}
+
+#btn-save-address {
+    padding: 8px;
+    width: 120px;
+    margin-top: 40px;
+    margin-left: 180px;
+    border-radius: 10px;
+    font-weight: bold;
+}
+
+.btn-address-container {
+    margin-top: 10px;
+    padding: 10px;
+    text-align: center;
+}
+
+
+/* Table */
+
+.header-address {
+    background: #4d004d;
+    color: #fff;
+}
+
+td, th {
+    padding: 10px;
+    width: 170px;
+}

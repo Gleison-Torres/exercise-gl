@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block 'title' %}Adicione seu endereço{% endblock %}
+
+
+{% block 'content' %}
+
+    <div class="add-address-container">
+        <div class="form-add-address">
+            <form method="post" action="">{% csrf_token %}
+                {% for input in form_add_address %}
+                    <div class="labels">
+                        {{ input.label}}
+                    </div>
+                        {{ input }}
+                {% endfor %}
+                <button type="submit" id="btn-save-address">Salvar</button>
+            </form>
+        </div>
+    </div>
+
+{% endblock %}

@@ -12,6 +12,7 @@ class Base(models.Model):
 
 
 class AddressUser(Base):
+    objects = None
     user = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name='Usuário')
     sender_name = models.CharField('Nome completo', max_length=100)
     postal_code = models.CharField('CEP', max_length=9)
@@ -26,10 +27,13 @@ class AddressUser(Base):
         ('trabalho', 'Trabalho')
     )
 
-    type_address = models.CharField('Este é o seu trabalho ou sua casa?', max_length=8, choices=TYPE_ADDRESS)
+    type_address = models.CharField(
+        'Este é o seu trabalho ou sua casa?', max_length=8, choices=TYPE_ADDRESS, default=False
+    )
 
     class Meta:
         verbose_name = 'Endereço'
+        verbose_name_plural = 'Endereços'
 
     def __str__(self):
         return self.sender_name

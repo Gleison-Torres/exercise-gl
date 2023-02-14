@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+
+{% block 'title' %}Endereços{% endblock %}
+
+{% block 'content' %}
+    <div class="address-container">
+        <div class="my-address">
+            {% if address %}
+                <table border="1">
+                    <thead class="header-address">
+                        <tr>
+                            <th>Nome (Destinatário)</th>
+                            <th>CEP</th>
+                            <th>Rua/Avenida</th>
+                            <th>Número</th>
+                            <th>Complemento</th>
+                            <th>Cidade</th>
+                            <th>Estado</th>
+                            <th>Endereço</th>
+                        </tr>
+                    </thead>
+                    {% for ad in address %}
+                    <tbody>
+                        <tr>
+                            <td>{{ ad.sender_name }}</td>
+                            <td>{{ ad.postal_code }}</td>
+                            <td>{{ ad.street_address }}</td>
+                            <td>{{ ad.number_address }}</td>
+                            <td>{{ ad.additional_info }}</td>
+                            <td>{{ ad.city }}</td>
+                            <td>{{ ad.state }}</td>
+                            <td>{{ ad.type_address }}</td>
+                        </tr>
+                    </tbody>
+                    {% endfor %}
+                </table>
+                <div class="btn-address-container">
+                    <form action="{% url 'add-address' %}" method="post">
+                        {% csrf_token %}
+                        <button type="submit" class="btn-add-address">Add Endereço</button>
+                    </form>
+                </div>
+            {% else %}
+                <div class="empty-list-address">
+                    <h1>Você não tem endereços cadastrados!</h1>
+                    <form action="{% url 'add-address' %}" method="post">
+                        {% csrf_token %}
+                        <button type="submit" class="btn-add-address">Add Endereço</button>
+                    </form>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+{% endblock %}

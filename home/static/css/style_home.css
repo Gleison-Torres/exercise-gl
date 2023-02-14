@@ -1,17 +1,3 @@
-/* Reset */
-    * {
-        padding: 0;
-        margin: 0;
-        text-decoration: none;
-        list-style: none;
-        box-sizing: border-box;
-    }
-
-    body {
-        font-family: sans-serif;
-    }
-
-
 /* Home page */
 
 a {
@@ -19,12 +5,12 @@ a {
 }
 
 
-
 .admin-container {
     margin-top: 220px;
     width: 100%;
     height: 100%;
 }
+
 
 .admin-link {
     background-color: #4d004d;
