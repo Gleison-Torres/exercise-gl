@@ -62,6 +62,21 @@
     </div>
     <!--End content-->
 
+
+    <script src="{% static 'js/jquery-3.6.3.min.js' %}"></script>
+    <script src="{% static 'js/jquery.mask.min.js' %}"></script>
+    <script>
+        $(document).ready(function(){
+            $('#id_postal_code').mask('00000-000');
+        });
+
+        $(() => {
+          $('#id_postal_code').on('input', function() {
+            if($(this).val().length == 9) $('form').submit()
+          })
+        })
+    </script>
+
     <!--Footer-->
     <div class="footer-container">
         <footer>

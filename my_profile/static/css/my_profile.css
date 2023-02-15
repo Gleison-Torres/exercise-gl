@@ -107,7 +107,7 @@
     background: #4d004d;
     color: #fff;
     width: 530px;
-    height: 80%;
+    height: 85%;
     margin-top: 30px;
     padding: 40px;
     border-radius: 25px;
@@ -137,7 +137,7 @@
 }
 
 
-#id_additional_info {
+#id_additional_info, #id_neighborhood {
     margin-left: 7px;
     width: 100%;
     display: block;
@@ -147,6 +147,7 @@
     margin-bottom: 15px;
 }
 
+
 #id_city, #id_state {
     margin-left: 7px;
     width: 50%;
@@ -155,6 +156,10 @@
     border-radius: 10px;
     margin-top: 5px;
     margin-bottom: 15px;
+    background: #DCDCDC;
+    font-weight: bold;
+    color:#000000;
+    cursor: not-allowed;
 }
 
 #id_type_address {

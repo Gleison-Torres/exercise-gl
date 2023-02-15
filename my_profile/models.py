@@ -18,6 +18,7 @@ class AddressUser(Base):
     postal_code = models.CharField('CEP', max_length=9)
     street_address = models.CharField('Rua/Avenida', max_length=200)
     number_address = models.CharField('Numero', max_length=20)
+    neighborhood = models.CharField('Bairro', max_length=100)
     additional_info = models.CharField('Complemento', max_length=200, blank=True)
     city = models.CharField('Cidade', max_length=100)
     state = models.CharField('Estado', max_length=2)

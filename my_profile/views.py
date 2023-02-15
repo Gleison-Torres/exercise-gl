@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from . import models
 from . import forms
 from django.contrib import messages
+from pycep_correios import get_address_from_cep, WebService
 
 
 def my_profile(request):
@@ -27,7 +28,18 @@ def add_address(request):
             messages.success(request, 'Endereço cadastrado com sucesso!')
             return redirect('address')
         else:
-            messages.error(request, 'Erro no preenchimento do formulário!')
-            return render(request, 'add_address.html', {'form_add_address': forms.AddressForm})
+            address = get_address_from_cep(request.POST.get('postal_code'), webservice=WebService.APICEP)
+
+            context = {'get_cep': address,
+                       'form_add_address': forms.AddressForm,
+                       'name': request.POST.get('sender_name')}
+
+            return render(request, 'add_address.html', context)
     else:
         return render(request, 'add_address.html', {'form_add_address': forms.AddressForm})
+
+
+def get_cep(request):
+    cep = request.POST.get('postal_code')
+    print(cep)
+    return redirect('')
