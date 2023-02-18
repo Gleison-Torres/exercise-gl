@@ -1,6 +1,17 @@
-from pycep_correios import get_address_from_cep, WebService
+import requests
 
 
-adress = get_address_from_cep('08431999', webservice=WebService.APICEP)
+cep = '08431-800'
 
-print(f'Endereço: {adress}')
+link = f'http://viacep.com.br/ws/{cep}/json/'
+
+
+
+requisicao = requests.get(link)
+print(type(requisicao))
+
+endereco = requisicao.json()
+
+print(type(endereco))
+print(requisicao.json())
+

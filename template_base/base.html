@@ -75,6 +75,12 @@
             if($(this).val().length == 9) $('form').submit()
           })
         })
+
+        $().ready(function() {
+            setTimeout(function () {
+                $('.messages').hide();
+            }, 2500);
+        });
     </script>
 
     <!--Footer-->

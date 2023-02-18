@@ -58,7 +58,7 @@ def login_create(request):
 
         if authenticated_user is not None:
             login(request, authenticated_user)
-            messages.success(request, 'Logado com sucesso!')
+            messages.success(request, f'Você está logado com o usuário "{request.user}"')
             return redirect('home')
         else:
             messages.error(request, 'Usuário ou senha incorretos!')

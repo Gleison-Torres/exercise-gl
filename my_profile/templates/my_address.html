@@ -10,26 +10,45 @@
                     <thead class="header-address">
                         <tr>
                             <th>Nome (Destinatário)</th>
-                            <th>CEP</th>
+                            <th class="cep-table">CEP</th>
                             <th>Rua/Avenida</th>
-                            <th>Número</th>
+                            <th class="number-table">Número</th>
                             <th>Complemento</th>
                             <th>Cidade</th>
-                            <th>Estado</th>
-                            <th>Endereço</th>
+                            <th class="state-table">UF</th>
+                            <th class="type-table">Endereço</th>
+                            <th class="manage-table">Gerenciar</th>
                         </tr>
                     </thead>
                     {% for ad in address %}
                     <tbody>
                         <tr>
                             <td>{{ ad.sender_name }}</td>
-                            <td>{{ ad.postal_code }}</td>
+                            <td class="cep-table">{{ ad.postal_code }}</td>
                             <td>{{ ad.street_address }}</td>
-                            <td>{{ ad.number_address }}</td>
+                            <td class="number-table">{{ ad.number_address }}</td>
                             <td>{{ ad.additional_info }}</td>
                             <td>{{ ad.city }}</td>
-                            <td>{{ ad.state }}</td>
-                            <td>{{ ad.type_address }}</td>
+                            <td class="state-table">{{ ad.state }}</td>
+                            <td class="type-table">{{ ad.type_address }}</td>
+                            <td class="manage-table">
+                                <div class="manage-address-container">
+                                    <div class="btn-edit">
+                                        <form method="post" action="">
+                                            <button id="btn-edit">
+                                                <i title="Editar endereço" class="fa-regular fa-pen-to-square"></i>
+                                            </button>
+                                        </form>
+                                    </div>
+                                    <div class="btn-delete">
+                                        <form method="post" action="">
+                                            <button id="btn-delete">
+                                                <i title="Deletar endereço" class="fa-solid fa-trash-can"></i>
+                                            </button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </td>
                         </tr>
                     </tbody>
                     {% endfor %}

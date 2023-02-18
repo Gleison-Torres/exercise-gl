@@ -4,10 +4,8 @@
     width: 100%;
     margin-top: 120px;
     text-align: center;
-    background-color: ;
     height: 50vh;
     margin-bottom: 50px;
-
 }
 
 .my-profile {
@@ -92,7 +90,6 @@
     border-radius: 20px;
 }
 
-
 /* add_address.html */
 
 .add-address-container {
@@ -101,6 +98,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-top:40px;
 }
 
 .form-add-address {
@@ -172,9 +170,13 @@
     margin-left: 10px;
 }
 
+/*  Remoção da spin-button no input type number */
+input[type=number]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+}
+
 
 /* Buttons */
-
 .btn-add-address-container {
     padding: 15px;
     margin-top: 15px;
@@ -223,4 +225,63 @@
 td, th {
     padding: 10px;
     width: 170px;
+}
+
+.number-table {
+    width: 20px;
+}
+
+.cep-table {
+    width: 100px;
+}
+
+.state-table, .type-table {
+    width: 70px;
+}
+
+.manage-table {
+    width: 140px;
+}
+
+
+.manage-address-container {
+    display: flex;
+    width: 100%;
+}
+
+
+
+.btn-delete {
+    width: 50%;
+    text-align: right;
+
+}
+
+
+#btn-delete {
+    font-weight: bold;
+    font-size: 40px;
+    border: none;
+    cursor: pointer;
+    background-color: #fff;
+
+}
+
+.fa-trash-can {
+    color: #4d004d;
+}
+
+.btn-edit {
+    width: 50%;
+    float: left;
+
+}
+
+#btn-edit {
+    color: #4d004d;
+    font-weight: bold;
+    font-size: 40px;
+    background: #fff;
+    border: none;
+    cursor: pointer;
 }

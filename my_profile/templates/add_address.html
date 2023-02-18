@@ -21,7 +21,7 @@
                        value="{{ get_cep.logradouro }}" id="id_street_address">
 
                 <div class="labels">Número</div>
-                <input type="text" maxlength="20" name="number_address" required id="id_number_address">
+                <input type="number" maxlength="20" name="number_address" required id="id_number_address">
 
                 <div class="labels">Complemento</div>
                 <input type="text" name="additional_info" maxlength="200"
@@ -33,7 +33,7 @@
 
                 <div class="labels">Cidade</div>
                 <input type="text" name="city" readonly maxlength="100"
-                       value="{{ get_cep.cidade }}" id="id_city">
+                       value="{{ get_cep.localidade }}" id="id_city">
 
                 <div class="labels">Estado</div>
                 <input type="text" name="state" required readonly maxlength="100"
