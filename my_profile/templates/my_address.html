@@ -17,7 +17,7 @@
                             <th>Cidade</th>
                             <th class="state-table">UF</th>
                             <th class="type-table">Endereço</th>
-                            <th class="manage-table">Gerenciar</th>
+                            <th>Gerenciar</th>
                         </tr>
                     </thead>
                     {% for ad in address %}
@@ -34,15 +34,15 @@
                             <td class="manage-table">
                                 <div class="manage-address-container">
                                     <div class="btn-edit">
-                                        <form method="post" action="">
+                                        <form method="post" action="">{% csrf_token %}
                                             <button id="btn-edit">
                                                 <i title="Editar endereço" class="fa-regular fa-pen-to-square"></i>
                                             </button>
                                         </form>
                                     </div>
                                     <div class="btn-delete">
-                                        <form method="post" action="">
-                                            <button id="btn-delete">
+                                        <form class="delete-address" method="post" action="{% url 'delete_address' ad.pk %}">{% csrf_token %}
+                                            <button onclick="raiseAlert()" id="btn-delete">
                                                 <i title="Deletar endereço" class="fa-solid fa-trash-can"></i>
                                             </button>
                                         </form>

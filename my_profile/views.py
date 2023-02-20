@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from . import models
 from . import forms
 from django.contrib import messages
+from django.http import Http404
 import requests
 from django.contrib.auth.decorators import login_required
 
@@ -47,3 +48,12 @@ def add_address(request):
     else:
         return render(request, 'add_address.html', {'form_add_address': forms.AddressForm})
 
+
+def delete_address(request, pk):
+    if request.method == 'GET':
+        raise Http404('Página não encontrada!')
+
+    address = models.AddressUser.objects.get(id=pk)
+    address.delete()
+    messages.success(request, 'Endereço deletado com sucesso!')
+    return redirect('address')

@@ -241,6 +241,7 @@ td, th {
 
 .manage-table {
     width: 140px;
+    background-color: #f0f0f5;
 }
 
 
@@ -254,7 +255,6 @@ td, th {
 .btn-delete {
     width: 50%;
     text-align: right;
-
 }
 
 
@@ -263,8 +263,7 @@ td, th {
     font-size: 40px;
     border: none;
     cursor: pointer;
-    background-color: #fff;
-
+    background-color: #f0f0f5;
 }
 
 .fa-trash-can {
@@ -281,7 +280,7 @@ td, th {
     color: #4d004d;
     font-weight: bold;
     font-size: 40px;
-    background: #fff;
+    background-color: #f0f0f5;
     border: none;
     cursor: pointer;
 }
