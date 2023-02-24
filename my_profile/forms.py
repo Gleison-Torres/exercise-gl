@@ -12,4 +12,6 @@ class AddressForm(forms.ModelForm):
 
         widgets = {
             'type_address': forms.RadioSelect,
+            'city': forms.TextInput(attrs={'readonly': True}),
+            'state': forms.TextInput(attrs={'readonly': True}),
         }

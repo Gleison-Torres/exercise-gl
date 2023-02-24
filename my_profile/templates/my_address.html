@@ -34,11 +34,11 @@
                             <td class="manage-table">
                                 <div class="manage-address-container">
                                     <div class="btn-edit">
-                                        <form method="post" action="">{% csrf_token %}
-                                            <button id="btn-edit">
-                                                <i title="Editar endereço" class="fa-regular fa-pen-to-square"></i>
-                                            </button>
-                                        </form>
+
+                                        <a href="{% url 'edit_address' ad.pk %}" id="btn-edit">
+                                            <i title="Editar endereço" class="fa-regular fa-pen-to-square"></i>
+                                        </a>
+
                                     </div>
                                     <div class="btn-delete">
                                         <form class="delete-address" method="post" action="{% url 'delete_address' ad.pk %}">{% csrf_token %}
@@ -54,7 +54,7 @@
                     {% endfor %}
                 </table>
                 <div class="btn-address-container">
-                    <a href="{% url 'add-address' %}" class="btn-add-address">Add Endereço</a>
+                    <a href="{% url 'add_address' %}" class="btn-add-address">Add Endereço</a>
                 </div>
             {% else %}
                 <div class="empty-list-address">

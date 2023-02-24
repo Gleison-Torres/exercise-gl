@@ -39,12 +39,15 @@ def add_address(request):
             api_link = f'http://viacep.com.br/ws/{cep}/json/'
             info_address = requests.get(api_link)
             address = info_address.json()
+            if address.get('erro'):
+                messages.error(request, 'CEP não encontrado!')
+                return redirect('add_address')
+            else:
+                context = {'get_cep': address,
+                           'form_add_address': forms.AddressForm,
+                           'name': request.POST.get('sender_name')}
 
-            context = {'get_cep': address,
-                       'form_add_address': forms.AddressForm,
-                       'name': request.POST.get('sender_name')}
-
-            return render(request, 'add_address.html', context)
+                return render(request, 'add_address.html', context)
     else:
         return render(request, 'add_address.html', {'form_add_address': forms.AddressForm})
 
@@ -57,3 +60,23 @@ def delete_address(request, pk):
     address.delete()
     messages.success(request, 'Endereço deletado com sucesso!')
     return redirect('address')
+
+
+@login_required(redirect_field_name='next', login_url='login')
+def edit_address(request, pk):
+    address = models.AddressUser.objects.get(id=pk, user=request.user)
+    form = forms.AddressForm(request.POST or None, instance=address)
+
+    context = {
+        'address': address,
+        'form': form
+    }
+
+    if request.POST:
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Endereço alterado com sucesso!')
+            return redirect('address')
+    else:
+        return render(request, 'edit_address.html', context)
+

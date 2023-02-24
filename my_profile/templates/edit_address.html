@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+
+{% block 'title' %}Edite seu endereço{% endblock %}
+
+
+{% block 'content' %}
+
+    <div class="edit-address-container">
+        <div class="form-edit-address">
+            <form method="post" action="{% url 'edit_address' address.pk %}">{% csrf_token %}
+                <div class="labels">Nome completo</div>
+                {{ form.sender_name }}
+
+                <div class="labels">CEP</div>
+                {{form.postal_code}}
+
+                <div class="streets-number-container">
+                    <div class="streets-container">
+                        <div class="labels">Rua/Avenida</div>
+                        {{form.street_address}}
+                    </div>
+                    <div class="number-container">
+                        <div class="labels">Número</div>
+                        {{form.number_address}}
+                    </div>
+                </div>
+
+                <div class="neighborhood-info-container">
+                    <div class="additional-info-container">
+                        <div class="labels">Complemento</div>
+                        {{form.additional_info}}
+                    </div>
+                    <div class="neighborhood-container">
+                        <div class="labels">Bairro</div>
+                        {{form.neighborhood}}
+                    </div>
+                </div>
+
+                <div class="city-state-container">
+                    <div class="city-container">
+                        <div class="labels">Cidade</div>
+                        {{form.city}}
+                    </div>
+                    <div class="state-container">
+                        <div class="labels">Estado</div>
+                        {{form.state}}
+                    </div>
+                </div>
+
+                <div class="labels">Este é o seu trabalho ou sua casa?</div>
+                {{ form.type_address }}
+                <button type="submit" id="btn-save-address">Salvar</button>
+            </form>
+        </div>
+    </div>
+
+{% endblock %}
