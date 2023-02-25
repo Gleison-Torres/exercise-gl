@@ -3,7 +3,6 @@ from . import models
 from . import forms
 from django.contrib import messages
 from django.http import Http404
-import requests
 from django.contrib.auth.decorators import login_required
 
 
@@ -34,20 +33,7 @@ def add_address(request):
             messages.success(request, 'Endereço cadastrado com sucesso!')
             return redirect('address')
         else:
-            cep = request.POST.get('postal_code')
-
-            api_link = f'http://viacep.com.br/ws/{cep}/json/'
-            info_address = requests.get(api_link)
-            address = info_address.json()
-            if address.get('erro'):
-                messages.error(request, 'CEP não encontrado!')
-                return redirect('add_address')
-            else:
-                context = {'get_cep': address,
-                           'form_add_address': forms.AddressForm,
-                           'name': request.POST.get('sender_name')}
-
-                return render(request, 'add_address.html', context)
+            return render(request, 'add_address.html')
     else:
         return render(request, 'add_address.html', {'form_add_address': forms.AddressForm})
 
@@ -58,7 +44,7 @@ def delete_address(request, pk):
 
     address = models.AddressUser.objects.get(id=pk)
     address.delete()
-    messages.success(request, 'Endereço deletado com sucesso!')
+    messages.success(request, 'O endereço foi excluído com sucesso!')
     return redirect('address')
 
 
@@ -79,4 +65,3 @@ def edit_address(request, pk):
             return redirect('address')
     else:
         return render(request, 'edit_address.html', context)
-

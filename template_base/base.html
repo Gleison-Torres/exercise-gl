@@ -67,22 +67,14 @@
     <script src="{% static 'js/jquery.mask.min.js' %}"></script>
     <script src="{% static 'js/alert.js' %}"></script>
     <script>
-        $(document).ready(function(){
-            $('#id_postal_code').mask('00000-000');
-        });
-
-        $(() => {
-          $('#id_postal_code').on('input', function() {
-            if($(this).val().length == 9) $('form').submit()
-          })
-        })
-
         $().ready(function() {
             setTimeout(function () {
                 $('.messages').hide();
             }, 2500);
         });
     </script>
+
+    <script>{% block 'script' %}{% endblock %}</script>
 
     <!--Footer-->
     <div class="footer-container">

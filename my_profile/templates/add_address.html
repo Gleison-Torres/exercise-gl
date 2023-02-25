@@ -9,16 +9,14 @@
         <div class="form-add-address">
             <form method="post" action="{% url 'add_address' %}">{% csrf_token %}
                 <div class="labels">Nome completo</div>
-                <input type="text" name="sender_name" required maxlength="100"
-                       value="{{ name }}" id="id_sender_name">
+                <input type="text" name="sender_name" required maxlength="100" id="id_sender_name">
 
                 <div class="labels">CEP</div>
-                <input type="text" name="postal_code" required maxlength="9"
-                       value="{{ get_cep.cep }}" id="id_postal_code">
+                <input type="text" name="postal_code" required maxlength="9" id="id_postal_code">
                 <div class="streets-number-container">
                     <div class="streets-container">
                         <div class="labels">Rua/Avenida</div>
-                        <input type="text" name="street_address" required maxlength="200" value="{{ get_cep.logradouro }}" id="id_street_address">
+                        <input type="text" name="street_address" required maxlength="200" id="id_street_address">
                     </div>
                     <div class="number-container">
                         <div class="labels">Número</div>
@@ -28,22 +26,22 @@
                 <div class="neighborhood-info-container">
                     <div class="additional-info-container">
                         <div class="labels">Complemento</div>
-                            <input type="text" name="additional_info" maxlength="200" value="{{ get_cep.complemento }}" id="id_additional_info">
+                            <input type="text" name="additional_info" maxlength="200" id="id_additional_info">
                     </div>
                     <div class="neighborhood-container">
                         <div class="labels">Bairro</div>
-                            <input type="text" name="neighborhood" maxlength="200" value="{{ get_cep.bairro }}" id="id_neighborhood">
+                            <input type="text" name="neighborhood" maxlength="200" id="id_neighborhood">
                     </div>
                 </div>
 
                 <div class="city-state-container">
                     <div class="city-container">
                         <div class="labels">Cidade</div>
-                            <input type="text" name="city" readonly maxlength="100" value="{{ get_cep.localidade }}" id="id_city">
+                            <input type="text" name="city" readonly maxlength="100" id="id_city">
                     </div>
                     <div class="state-container">
                         <div class="labels">Estado</div>
-                            <input type="text" name="state" required readonly maxlength="100" value="{{ get_cep.uf }}" id="id_state">
+                            <input type="text" name="state" required readonly maxlength="100" id="id_state">
                     </div>
                 </div>
 
@@ -55,5 +53,74 @@
         </div>
     </div>
 
+
+{% endblock %}
+
+{% block 'script' %}
+
+    $(document).ready(function(){
+        $('#id_postal_code').mask('00000-000');
+    });
+
+    $(document).ready(function() {
+
+        function limpa_formulário_cep() {
+            // Limpa valores do formulário de cep.
+            $("#id_street_address").val("");
+            $("#id_neighborhood").val("");
+            $("#id_city").val("");
+            $("#id_state").val("");
+        }
+
+        //Quando o campo cep perde o foco.
+        $("#id_postal_code").blur(function() {
+
+            //Nova variável "cep" somente com dígitos.
+            var cep = $(this).val().replace(/\D/g, '');
+
+            //Verifica se campo cep possui valor informado.
+            if (cep != "") {
+
+                //Expressão regular para validar o CEP.
+                var validacep = /^[0-9]{8}$/;
+
+                //Valida o formato do CEP.
+                if(validacep.test(cep)) {
+
+                    //Preenche os campos com "..." enquanto consulta webservice.
+                    $("#id_street_address").val("...");
+                    $("#id_neighborhood").val("...");
+                    $("#id_city").val("...");
+                    $("#id_state").val("...");
+
+                    //Consulta o webservice viacep.com.br/
+                    $.getJSON("https://viacep.com.br/ws/"+ cep +"/json/?callback=?", function(dados) {
+
+                        if (!("erro" in dados)) {
+                            //Atualiza os campos com os valores da consulta.
+                            $("#id_street_address").val(dados.logradouro);
+                            $("#id_neighborhood").val(dados.bairro);
+                            $("#id_city").val(dados.localidade);
+                            $("#id_state").val(dados.uf);
+                        } //end if.
+                        else {
+                            //CEP pesquisado não foi encontrado.
+                            limpa_formulário_cep();
+                            alert("CEP não encontrado.");
+                        }
+                    });
+                } //end if.
+                else {
+                    //cep é inválido.
+                    limpa_formulário_cep();
+                    alert("Formato de CEP inválido.");
+                }
+            } //end if.
+            else {
+                //cep sem valor, limpa formulário.
+                limpa_formulário_cep();
+            }
+        });
+    });
 
 {% endblock %}
