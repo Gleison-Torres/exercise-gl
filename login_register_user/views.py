@@ -3,12 +3,17 @@ from django.contrib import messages
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
 from django.http import Http404
-from . import forms
+from . import forms, models
 
 
 def register_user(request):
     if request.user.is_authenticated:
         return redirect('home')
+
+    form = forms.RegisterForm()
+    for f in form:
+        print(f)
+
 
     register = request.session.get('register_form_data')
     return render(request, 'register_user.html', {'forms': forms.RegisterForm(register)})
@@ -21,14 +26,25 @@ def register_user_validation(request):
     request.session['register_form_data'] = request.POST
 
     form = forms.RegisterForm(request.POST)
+
     if form.is_valid():
+
         save_data = form.save(commit=False)
 
-        user = User.objects.create_user(username=save_data.username, email=save_data.email, password=save_data.password)
-        user.first_name = save_data.first_name
-        user.last_name = save_data.last_name
+        # Cria conta  (Nome, Sobrenome, usuário, E-mail e senha).
+        user_account = User.objects.create_user(
+            username=save_data.username, email=save_data.email, password=save_data.password
+        )
 
-        user.save()
+        user_account.first_name = save_data.first_name
+        user_account.last_name = save_data.last_name
+
+        user_account.save()
+
+        # Cria perfil (CPF e telefone).
+        models.DataUser.objects.create(
+            user_profile=user_account, cell_phone=form.cleaned_data.get('cell_phone'), cpf=form.cleaned_data.get('cpf')
+        )
 
         del request.session['register_form_data']
         messages.success(request, 'Usuário cadastrado com sucesso!')

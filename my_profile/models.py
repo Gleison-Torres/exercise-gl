@@ -3,7 +3,7 @@ from django.contrib.auth.models import User
 
 
 class Base(models.Model):
-    active = models.BooleanField('Ativo', default=True)
+    active = models.BooleanField('Ativo', default=False)
     create = models.DateField('Criado', auto_now_add=True)
     modified = models.DateField('Modificado', auto_now=True)
 
@@ -39,3 +39,10 @@ class AddressUser(Base):
     def __str__(self):
         return self.sender_name
 
+    def save(self, *args, **kwargs):
+        if self.active:
+            addresses = AddressUser.objects.filter(active=True, user=self.user)
+            for address in addresses:
+                address.active = False
+                address.save()
+        super(AddressUser, self).save(*args, **kwargs)

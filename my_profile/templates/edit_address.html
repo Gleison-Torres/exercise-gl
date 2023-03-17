@@ -47,8 +47,16 @@
                     </div>
                 </div>
 
-                <div class="labels">Este é o seu trabalho ou sua casa?</div>
-                {{ form.type_address }}
+                <div class="select-container">
+                    <div class="type-address-container">
+                        <div class="labels">{{ form.type_address.label}}</div>
+                        {{ form.type_address }}
+                    </div>
+                    <div class="principal-address-container">
+                        <label>Marcar como endereço principal?</label>
+                        {{ form.active }}
+                    </div>
+                </div>
                 <button type="submit" id="btn-save-address">Salvar</button>
             </form>
         </div>

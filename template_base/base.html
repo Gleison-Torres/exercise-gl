@@ -66,12 +66,14 @@
     <script src="{% static 'js/jquery-3.6.3.min.js' %}"></script>
     <script src="{% static 'js/jquery.mask.min.js' %}"></script>
     <script src="{% static 'js/alert.js' %}"></script>
+    <script>{% block 'script' %}{% endblock %}</script>
     <script>
         $().ready(function() {
             setTimeout(function () {
                 $('.messages').hide();
             }, 2500);
         });
+
         $(document).ready(function(){
             $('#id_postal_code').mask('00000-000');
         });

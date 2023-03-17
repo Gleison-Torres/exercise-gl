@@ -1,10 +1,37 @@
 {% extends 'base.html' %}
 
-{% block 'title' %}Informações da conta{% endblock %}
+{% block 'title' %}Endereços{% endblock %}
 
 {% block 'content' %}
-    <br><br><br><br><br><br><br><br>
-    <center>
-        <h1>Em construção</h1>
-    </center>
+    <div class="info-container">
+        <div class="my-info">
+            <div class="title-info">
+                <h1>Dados cadastrais</h1>
+            </div>
+            <table  class="table-container-info">
+                <thead class="header-address">
+                    <tr>
+                        <th class="th-info">Nome completo</th>
+                        <th class="th-info">E-mail</th>
+                        <th class="th-info">Editar dados</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td id="border-left-table">{{user_info.first_name}} {{user_info.last_name}}</td>
+                        <td class="middle-table">{{user_info.email}}</td>
+                        <td class="manage-info-table">
+                            <div class="manage-info-container">
+                                <div class="btn-edit-content">
+                                    <a href="*" id="btn-edit-content">
+                                        <i title="Editar endereço" class="fa-regular fa-pen-to-square"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
 {% endblock %}

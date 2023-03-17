@@ -45,10 +45,18 @@
                     </div>
                 </div>
 
-
-                <div class="labels">{{ form_add_address.type_address.label}}</div>
-                {{ form_add_address.type_address }}
+                <div class="select-container">
+                    <div class="type-address-container">
+                        <div class="labels">{{ form_add_address.type_address.label}}</div>
+                        {{ form_add_address.type_address }}
+                    </div>
+                    <div class="principal-address-container">
+                        <label>Marcar como endereço principal?</label>
+                        {{ form_add_address.active }}
+                    </div>
+                </div>
                 <button type="submit" id="btn-save-address">Salvar</button>
+
             </form>
         </div>
     </div>

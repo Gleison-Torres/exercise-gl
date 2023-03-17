@@ -17,6 +17,7 @@
                             <th>Cidade</th>
                             <th class="state-table">UF</th>
                             <th class="type-table">Endereço</th>
+                            <th>Endereço principal</th>
                             <th>Gerenciar</th>
                         </tr>
                     </thead>
@@ -31,6 +32,11 @@
                             <td>{{ ad.city }}</td>
                             <td class="state-table">{{ ad.state }}</td>
                             <td class="type-table">{{ ad.type_address }}</td>
+                            {% if ad.active %}
+                                <td>Ativo</td>
+                            {% else %}
+                                <td>Inativo</td>
+                            {% endif %}
                             <td class="manage-table">
                                 <div class="manage-address-container">
                                     <div class="btn-edit">
@@ -60,7 +66,7 @@
                 <div class="empty-list-address">
                     <h1>Você não tem endereços cadastrados!</h1>
                     <div class="btn-add-address-container">
-                        <a href="{% url 'add-address' %}" class="btn-add-address">Add Endereço</a>
+                        <a href="{% url 'add_address' %}" class="btn-add-address">Add Endereço</a>
                     </div>
                 </div>
             {% endif %}

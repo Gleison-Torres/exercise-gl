@@ -4,16 +4,12 @@ from . import forms
 from django.contrib import messages
 from django.http import Http404
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.models import User
 
 
 @login_required(redirect_field_name='next', login_url='login')
 def my_profile(request):
     return render(request, 'my_profile.html')
-
-
-@login_required(redirect_field_name='next', login_url='login')
-def my_info(request):
-    return render(request, 'my_info.html')
 
 
 @login_required(redirect_field_name='next', login_url='login')
@@ -34,8 +30,8 @@ def add_address(request):
             return redirect('address')
         else:
             return render(request, 'add_address.html')
-    else:
-        return render(request, 'add_address.html', {'form_add_address': forms.AddressForm})
+
+    return render(request, 'add_address.html', {'form_add_address': forms.AddressForm})
 
 
 def delete_address(request, pk):
@@ -63,5 +59,13 @@ def edit_address(request, pk):
             form.save()
             messages.success(request, 'Endereço alterado com sucesso!')
             return redirect('address')
-    else:
-        return render(request, 'edit_address.html', context)
+        else:
+            messages.info(request, 'Algo deu errado, tente novamente!')
+
+    return render(request, 'edit_address.html', context)
+
+
+@login_required(redirect_field_name='next', login_url='login')
+def my_info(request):
+    return render(request, 'my_info.html', {'user_info': User.objects.get(username=request.user)})
+

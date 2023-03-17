@@ -4,6 +4,17 @@ from django.core.exceptions import ValidationError
 
 
 class RegisterForm(forms.ModelForm):
+    cell_phone = forms.CharField(
+        label='Telefone',
+        widget=forms.TextInput(attrs={'placeholder': '(99) 12345-6789'})
+    )
+
+    cpf = forms.CharField(
+        label='CPF',
+        required=True,
+        widget=forms.TextInput(attrs={'placeholder': '123.456.789-00'})
+    )
+
     password = forms.CharField(
         label='Senha',
         required=True,
@@ -24,7 +35,7 @@ class RegisterForm(forms.ModelForm):
 
     class Meta:
         model = User
-        fields = ('first_name', 'last_name', 'username', 'email', 'password')
+        fields = ('first_name', 'last_name', 'username', 'email', 'cell_phone', 'cpf', 'password')
 
         labels = {
             'first_name': 'Nome',
