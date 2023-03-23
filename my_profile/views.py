@@ -1,10 +1,10 @@
 from django.shortcuts import render, redirect
 from . import models
+from login_register_user.models import DataUser
 from . import forms
 from django.contrib import messages
 from django.http import Http404
 from django.contrib.auth.decorators import login_required
-from django.contrib.auth.models import User
 
 
 @login_required(redirect_field_name='next', login_url='login')
@@ -67,5 +67,11 @@ def edit_address(request, pk):
 
 @login_required(redirect_field_name='next', login_url='login')
 def my_info(request):
-    return render(request, 'my_info.html', {'user_info': User.objects.get(username=request.user)})
+
+    context = {
+        'user_info': DataUser.objects.get(user_profile=request.user),
+        'address': models.AddressUser.objects.get(user=request.user, active=True)
+    }
+
+    return render(request, 'my_info.html', context)
 

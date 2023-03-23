@@ -10,11 +10,6 @@ def register_user(request):
     if request.user.is_authenticated:
         return redirect('home')
 
-    form = forms.RegisterForm()
-    for f in form:
-        print(f)
-
-
     register = request.session.get('register_form_data')
     return render(request, 'register_user.html', {'forms': forms.RegisterForm(register)})
 
@@ -94,4 +89,3 @@ def logout_user(request):
         raise Http404('Página não encontrada!')
 
     return render(request, 'logout_user.html')
-

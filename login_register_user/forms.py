@@ -1,6 +1,7 @@
 from django import forms
 from django.contrib.auth.models import User
 from django.core.exceptions import ValidationError
+from . import models
 
 
 class RegisterForm(forms.ModelForm):
@@ -99,6 +100,13 @@ class RegisterForm(forms.ModelForm):
         if exist:
             raise ValidationError('Nome de usuário já existe!')
         return name_user
+
+    def clean_cpf(self):
+        cpf_user = self.cleaned_data.get('cpf')
+        exist = models.DataUser.objects.filter(cpf=cpf_user).exists()
+        if exist:
+            raise ValidationError('Este CPF ja foi cadastrado!')
+        return cpf_user
 
 
 class LoginForm(forms.Form):

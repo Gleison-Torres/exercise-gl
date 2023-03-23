@@ -71,14 +71,24 @@
 }
 /* my_info.html*/
 
+.profile-container-data {
+    margin-top:40px;
+    height:300px;
+    width: 100%;
+    padding-left: 100px;
+}
+
+.address-container-data {
+    height:300px;
+    padding-left:90px;
+    margin-top: flex;
+    width: 100%;
+}
+
 .info-container {
     width: 100%;
-    display: flex;
-    margin-top: 70px;
-    margin-bottom: 60px;
     justify-content: center;
     align-items: center;
-    height: 400px;
 }
 
 .my-info {
@@ -87,6 +97,20 @@
     border-radius: 20px 20px 0px 0px;
     height: 100px;
     color: #fff;
+    margin-top: 100px;
+    display: inline-block;
+    width:90%;
+}
+
+.address-info {
+    background: #4d004d;
+    text-align: center;
+    border-radius: 20px 20px 0px 0px;
+    height: 100px;
+    width:92%;
+    color: #fff;
+    margin-top: 40px;
+    display: inline-block;
 }
 
 .title-info {
@@ -100,6 +124,7 @@
     border: 6px solid #4d004d;
     border-top: none;
     font-weight: bold;
+    width:100%;
 }
 
 .th-info {
@@ -110,7 +135,6 @@
 .manage-info-container {
     display: flex;
 }
-
 
 
 /* my_address.html */
@@ -456,7 +480,7 @@ td, th {
     color: #4d004d;
     font-weight: bold;
     font-size: 40px;
-    background-color: #f0f0f5;
+    background-color: #fff;
     border: none;
     cursor: pointer;
 }

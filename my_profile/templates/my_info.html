@@ -4,34 +4,76 @@
 
 {% block 'content' %}
     <div class="info-container">
-        <div class="my-info">
-            <div class="title-info">
-                <h1>Dados cadastrais</h1>
-            </div>
-            <table  class="table-container-info">
-                <thead class="header-address">
-                    <tr>
-                        <th class="th-info">Nome completo</th>
-                        <th class="th-info">E-mail</th>
-                        <th class="th-info">Editar dados</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td id="border-left-table">{{user_info.first_name}} {{user_info.last_name}}</td>
-                        <td class="middle-table">{{user_info.email}}</td>
-                        <td class="manage-info-table">
-                            <div class="manage-info-container">
-                                <div class="btn-edit-content">
-                                    <a href="*" id="btn-edit-content">
-                                        <i title="Editar endereço" class="fa-regular fa-pen-to-square"></i>
-                                    </a>
+        <div class="profile-container-data">
+            <div class="my-info">
+                <div class="title-info">
+                    <h1>Dados cadastrais</h1>
+                </div>
+                <table  class="table-container-info">
+                    <thead class="header-address">
+                        <tr>
+                            <th class="th-info">Nome completo</th>
+                            <th class="th-info">E-mail</th>
+                            <th class="th-info">Telefone</th>
+                            <th class="th-info">CPF</th>
+                            <th class="th-info">Editar dados</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>{{user_info.user_profile.first_name}} {{user_info.user_profile.last_name}}</td>
+                            <td>{{user_info.user_profile.email}}</td>
+                            <td>{{ user_info.cell_phone }}</td>
+                            <td>{{ user_info.cpf }}</td>
+                            <td>
+                                <div class="manage-info-container">
+                                    <div class="btn-edit-content">
+                                        <a href="*" id="btn-edit-content">
+                                            <i title="Editar endereço" class="fa-regular fa-pen-to-square"></i>
+                                        </a>
+                                    </div>
                                 </div>
-                            </div>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="address-container-data">
+            <div class="address-info">
+                <div class="title-info">
+                    <h1>Endereço principal</h1>
+                </div>
+                <table  class="table-container-info">
+                    <thead class="header-address">
+                        <tr>
+                            <th class="th-info">Nome (Destinatário)</th>
+                            <th class="th-info">CEP</th>
+                            <th class="th-info">Rua/Avenida	</th>
+                            <th class="th-info">Número</th>
+                            <th class="th-info">Complemento</th>
+                            <th>Bairro</th>
+                            <th>Cidade</th>
+                            <th>UF</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>{{ address.sender_name }}</td>
+                            <td>{{ address.postal_code}}</td>
+                            <td>{{ address.street_address }}</td>
+                            <td>{{ address.number_address }}</td>
+                            <td>{{ address.additional_info }}</td>
+                            <td>{{ address.neighborhood }}</td>
+                            <td>{{ address.city }}</td>
+                            <td>{{ address.state}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
+
+
+
 {% endblock %}
