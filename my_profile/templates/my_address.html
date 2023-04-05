@@ -40,11 +40,9 @@
                             <td class="manage-table">
                                 <div class="manage-address-container">
                                     <div class="btn-edit">
-
                                         <a href="{% url 'edit_address' ad.pk %}" id="btn-edit">
                                             <i title="Editar endereço" class="fa-regular fa-pen-to-square"></i>
                                         </a>
-
                                     </div>
                                     <div class="btn-delete">
                                         <form class="delete-address" method="post" action="{% url 'delete_address' ad.pk %}">{% csrf_token %}

@@ -4,16 +4,13 @@
 
 
 {% block 'content' %}
-
     <div class="edit-address-container">
         <div class="form-edit-address">
             <form method="post" action="{% url 'edit_address' address.pk %}">{% csrf_token %}
                 <div class="labels">Nome completo</div>
                 {{ form.sender_name }}
-
                 <div class="labels">CEP</div>
                 {{form.postal_code}}
-
                 <div class="streets-number-container">
                     <div class="streets-container">
                         <div class="labels">Rua/Avenida</div>
@@ -24,7 +21,6 @@
                         {{form.number_address}}
                     </div>
                 </div>
-
                 <div class="neighborhood-info-container">
                     <div class="additional-info-container">
                         <div class="labels">Complemento</div>
@@ -63,3 +59,70 @@
     </div>
 {% endblock %}
 
+{% block 'script' %}
+    $(document).ready(function(){
+        $('#id_postal_code').mask('00000-000');
+    });
+
+    $(document).ready(function() {
+
+        function limpa_formulário_cep() {
+            // Limpa valores do formulário de cep.
+            $("#id_street_address").val("");
+            $("#id_neighborhood").val("");
+            $("#id_city").val("");
+            $("#id_state").val("");
+        }
+
+        //Quando o campo cep perde o foco.
+        $("#id_postal_code").blur(function() {
+
+            //Nova variável "cep" somente com dígitos.
+            var cep = $(this).val().replace(/\D/g, '');
+
+            //Verifica se campo cep possui valor informado.
+            if (cep != "") {
+
+                //Expressão regular para validar o CEP.
+                var validacep = /^[0-9]{8}$/;
+
+                //Valida o formato do CEP.
+                if(validacep.test(cep)) {
+
+                    //Preenche os campos com "..." enquanto consulta webservice.
+                    $("#id_street_address").val("...");
+                    $("#id_neighborhood").val("...");
+                    $("#id_city").val("...");
+                    $("#id_state").val("...");
+
+                    //Consulta o webservice viacep.com.br/
+                    $.getJSON("https://viacep.com.br/ws/"+ cep +"/json/?callback=?", function(dados) {
+
+                        if (!("erro" in dados)) {
+                            //Atualiza os campos com os valores da consulta.
+                            $("#id_street_address").val(dados.logradouro);
+                            $("#id_neighborhood").val(dados.bairro);
+                            $("#id_city").val(dados.localidade);
+                            $("#id_state").val(dados.uf);
+                        } //end if.
+                        else {
+                            //CEP pesquisado não foi encontrado.
+                            limpa_formulário_cep();
+                            alert("CEP não encontrado.");
+                        }
+                    });
+                } //end if.
+                else {
+                    //cep é inválido.
+                    limpa_formulário_cep();
+                    alert("Formato de CEP inválido.");
+                }
+            } //end if.
+            else {
+                //cep sem valor, limpa formulário.
+                limpa_formulário_cep();
+            }
+        });
+    });
+
+{% endblock %}

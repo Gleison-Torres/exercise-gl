@@ -17,6 +17,7 @@
                             <th class="th-info">Telefone</th>
                             <th class="th-info">CPF</th>
                             <th class="th-info">Editar dados</th>
+                            <th class="th-info">Alterar senha</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -28,8 +29,17 @@
                             <td>
                                 <div class="manage-info-container">
                                     <div class="btn-edit-content">
-                                        <a href="*" id="btn-edit-content">
+                                        <a href="{% url 'edit_profile' user_info.pk %}" id="btn-edit-content">
                                             <i title="Editar endereço" class="fa-regular fa-pen-to-square"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="manage-info-container">
+                                    <div class="btn-edit-content">
+                                        <a href="{% url 'change_password' %}">
+                                            <i title="Alterar senha" id="password" class="fa-solid fa-key"></i>
                                         </a>
                                     </div>
                                 </div>
@@ -40,6 +50,7 @@
             </div>
         </div>
         <div class="address-container-data">
+            {% if address %}
             <div class="address-info">
                 <div class="title-info">
                     <h1>Endereço principal</h1>
@@ -47,33 +58,44 @@
                 <table  class="table-container-info">
                     <thead class="header-address">
                         <tr>
-                            <th class="th-info">Nome (Destinatário)</th>
+                            <th class="th-info">Destinatário</th>
                             <th class="th-info">CEP</th>
                             <th class="th-info">Rua/Avenida	</th>
                             <th class="th-info">Número</th>
                             <th class="th-info">Complemento</th>
-                            <th>Bairro</th>
-                            <th>Cidade</th>
-                            <th>UF</th>
+                            <th class="th-info">Bairro</th>
+                            <th class="th-info">Cidade</th>
+                            <th class="th-info">UF</th>
                         </tr>
                     </thead>
+                    {% for add in address %}
                     <tbody>
                         <tr>
-                            <td>{{ address.sender_name }}</td>
-                            <td>{{ address.postal_code}}</td>
-                            <td>{{ address.street_address }}</td>
-                            <td>{{ address.number_address }}</td>
-                            <td>{{ address.additional_info }}</td>
-                            <td>{{ address.neighborhood }}</td>
-                            <td>{{ address.city }}</td>
-                            <td>{{ address.state}}</td>
+                            <td>{{ add.sender_name }}</td>
+                            <td>{{ add.postal_code}}</td>
+                            <td>{{ add.street_address }}</td>
+                            <td>{{ add.number_address }}</td>
+                            <td>{{ add.additional_info }}</td>
+                            <td>{{ add.neighborhood }}</td>
+                            <td>{{ add.city }}</td>
+                            <td>{{ add.state}}</td>
                         </tr>
                     </tbody>
+                    {% endfor %}
                 </table>
             </div>
+            <div class="btn-alter-address-container">
+                <a href="{% url 'address' %}" class="btn-alter-address">Alterar endereço principal</a>
+            </div>
         </div>
+
+        {% else %}
+        <div class="empty-list-address-principal">
+            <h1>Você não tem um endereço principal!</h1>
+            <div class="btn-add-address-container">
+                <a href="{% url 'address' %}" class="btn-add-address">Escolher endereço principal</a>
+            </div>
+        </div>
+        {% endif %}
     </div>
-
-
-
 {% endblock %}

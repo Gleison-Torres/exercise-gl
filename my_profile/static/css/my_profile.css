@@ -70,12 +70,11 @@
     margin-left: 50px;
 }
 /* my_info.html*/
-
 .profile-container-data {
     margin-top:40px;
     height:300px;
-    width: 100%;
-    padding-left: 100px;
+    width: 90%;
+    margin:0 auto;
 }
 
 .address-container-data {
@@ -87,26 +86,27 @@
 
 .info-container {
     width: 100%;
-    justify-content: center;
-    align-items: center;
+    height:100vh;
+    margin-top:50px;
 }
 
 .my-info {
     background: #4d004d;
     text-align: center;
     border-radius: 20px 20px 0px 0px;
-    height: 100px;
+    height: 35%;
     color: #fff;
     margin-top: 100px;
     display: inline-block;
-    width:90%;
+    width: 90%;
+    margin-left: 5%;
 }
 
 .address-info {
     background: #4d004d;
     text-align: center;
     border-radius: 20px 20px 0px 0px;
-    height: 100px;
+    height: 104px;
     width:92%;
     color: #fff;
     margin-top: 40px;
@@ -128,7 +128,7 @@
 }
 
 .th-info {
-    border: none;
+    border: solid #4d004d;
     width:250px;
 }
 
@@ -136,6 +136,16 @@
     display: flex;
 }
 
+.empty-list-address-principal {
+    color: #fff;
+    background-color: #4d004d;
+    width: 720px;
+    text-align: center;
+    padding: 30px;
+    border-radius: 20px;
+    margin-top: 100px;
+    margin-left:290px;
+}
 
 /* my_address.html */
 
@@ -365,6 +375,24 @@ input[type=number]::-webkit-inner-spin-button {
     cursor: pointer;
 }
 
+.btn-alter-address-container {
+    padding: 5px;
+    margin-top: 100px;
+    height:100px;
+}
+
+.btn-alter-address {
+    padding: 8px;
+    width: 150px;
+    border: double;
+    border-radius: 10px;
+    font-weight: bold;
+    font-size: 15px;
+    background: #e6e6ff;
+    color: #000000;
+    margin-left: 540px;
+
+}
 /* Table */
 
 .table-container {
@@ -483,4 +511,12 @@ td, th {
     background-color: #fff;
     border: none;
     cursor: pointer;
+}
+
+.fa-regular {
+    margin-left:8px;
+}
+
+#password {
+    color: #4d004d;
 }

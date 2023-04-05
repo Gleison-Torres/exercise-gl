@@ -70,8 +70,42 @@ def my_info(request):
 
     context = {
         'user_info': DataUser.objects.get(user_profile=request.user),
-        'address': models.AddressUser.objects.get(user=request.user, active=True)
+        'address': models.AddressUser.objects.filter(user=request.user, active=True)
     }
 
     return render(request, 'my_info.html', context)
 
+
+@login_required(login_url='login')
+def edit_profile(request, pk):
+    data_profile = DataUser.objects.get(user_profile=request.user, id=pk)
+
+    form = forms.ProfileForm(request.POST or None, instance=data_profile)
+    context = {
+        'data_profile': data_profile,
+        'form': form
+    }
+
+    if request.POST:
+        if form.is_valid():
+            # Salva alteração de dados do usuário
+            data_profile.user_profile.first_name = form.cleaned_data.get('first_name')
+            data_profile.user_profile.last_name = form.cleaned_data.get('last_name')
+            data_profile.user_profile.email = form.cleaned_data.get('email')
+            data_profile.user_profile.save()
+
+            # Salva alteração de dados do perfil
+            data_profile.cell_phone = form.cleaned_data.get('cell_phone')
+            data_profile.save()
+            messages.success(request, 'Salvo com sucesso!')
+
+            return redirect('info')
+        else:
+            messages.info(request, 'Algo deu errado, tente novamente!')
+            return render(request, 'edit_profile.html', context)
+    else:
+        return render(request, 'edit_profile.html', context)
+
+
+def change_password(request):
+    return render(request, 'change_password.html')
