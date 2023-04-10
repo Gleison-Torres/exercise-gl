@@ -47,3 +47,19 @@ class ProfileForm(forms.ModelForm):
 
 
         }
+
+
+class PasswordChange(forms.Form):
+    old_password = forms.CharField(
+        label='Senha atual', widget=forms.PasswordInput(attrs={'placeholder': 'Senha atual'})
+    )
+
+    new_password = forms.CharField(
+        label='Nova senha', widget=forms.PasswordInput(attrs={'placeholder': 'Nova senha'})
+    )
+
+    confirm_new_password = forms.CharField(
+        label='Confirme a nova senha',
+        widget=forms.PasswordInput(attrs={'placeholder': 'Confirme a nova senha'})
+    )
+

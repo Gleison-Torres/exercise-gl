@@ -5,6 +5,7 @@ from . import forms
 from django.contrib import messages
 from django.http import Http404
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.models import User
 
 
 @login_required(redirect_field_name='next', login_url='login')
@@ -108,4 +109,8 @@ def edit_profile(request, pk):
 
 
 def change_password(request):
-    return render(request, 'change_password.html')
+    form = forms.PasswordChange()
+
+    context = {'form': form}
+
+    return render(request, 'change_password.html', context)
