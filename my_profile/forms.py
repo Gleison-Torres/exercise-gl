@@ -1,6 +1,8 @@
 from django import forms
 from .models import AddressUser
 from django.contrib.auth.models import User
+from django.contrib.auth.forms import PasswordChangeForm, SetPasswordForm
+from django.core.exceptions import ValidationError
 
 
 class AddressForm(forms.ModelForm):
@@ -49,17 +51,51 @@ class ProfileForm(forms.ModelForm):
         }
 
 
-class PasswordChange(forms.Form):
+class ChangePassword(PasswordChangeForm):
     old_password = forms.CharField(
-        label='Senha atual', widget=forms.PasswordInput(attrs={'placeholder': 'Senha atual'})
+        label='Senha antiga',
+        widget=forms.PasswordInput(attrs={'placeholder': 'Senha antiga', 'autofocus': True})
     )
 
-    new_password = forms.CharField(
-        label='Nova senha', widget=forms.PasswordInput(attrs={'placeholder': 'Nova senha'})
+    new_password1 = forms.CharField(
+        label='Nova senha',
+        help_text='A senha deve conter pelo menos 8 caracteres, '
+                  'incluir letras maiúsculas, minúsculas, números e caracteres especiais. ',
+        widget=forms.PasswordInput(attrs={'placeholder': 'Nova senha'})
     )
 
-    confirm_new_password = forms.CharField(
-        label='Confirme a nova senha',
-        widget=forms.PasswordInput(attrs={'placeholder': 'Confirme a nova senha'})
+    new_password2 = forms.CharField(
+        label='Repita a nova senha', widget=forms.PasswordInput(attrs={'placeholder': 'Repita a nova senha'})
     )
 
+    def clean(self):
+        cleaned_data = super(ChangePassword, self).clean()
+        pass1 = cleaned_data.get('new_password1')
+        pass2 = cleaned_data.get('new_password2')
+
+        if pass1 == pass2:
+            if len(pass1) >= 8:
+                upper_char = 0  # Contador de letras maiúsculas na senha.
+                special_char = 0  # Contador de caracteres especiais.
+
+                for digit in pass1:  # Verifica se "password_1" tem letras maiúsculas e caracteres especiais.
+                    if digit.isupper():
+                        upper_char += 1
+                    if digit in '#@$%¨&*()<>?.,/':  # Verifica se existe caracteres especiais na senha.
+                        special_char += 1
+
+                if upper_char == 0:
+                    raise ValidationError(
+                        {'new_password1': 'Use letras maiúsculas e minúsculas!',
+                         'new_password2': 'Use letras maiúsculas e minúsculas! '})
+
+                if special_char == 0:
+                    raise ValidationError(
+                        {'new_password1': 'Use caracteres especiais!',
+                         'new_password2': 'Use caracteres especiais!'})
+
+                if self.user.check_password(pass2):  # Verifica se a senha contem números.
+                    raise ValidationError(
+                        {'new_password1': 'A nova senha não pode ser igual a senha antiga.',
+                         'new_password2': 'A nova senha não pode ser igual a senha antiga.'}
+                    )

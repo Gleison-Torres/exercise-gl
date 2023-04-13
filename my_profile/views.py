@@ -5,7 +5,7 @@ from . import forms
 from django.contrib import messages
 from django.http import Http404
 from django.contrib.auth.decorators import login_required
-from django.contrib.auth.models import User
+from django.contrib.auth import update_session_auth_hash
 
 
 @login_required(redirect_field_name='next', login_url='login')
@@ -109,8 +109,14 @@ def edit_profile(request, pk):
 
 
 def change_password(request):
-    form = forms.PasswordChange()
-
-    context = {'form': form}
-
-    return render(request, 'change_password.html', context)
+    form = forms.ChangePassword(request.user, request.POST or None)
+    if request.method == 'POST':
+        if form.is_valid():
+            form.save()
+            update_session_auth_hash(request, form.user)
+            messages.success(request, 'Senha alterada com sucesso!')
+            return render(request, 'change_password.html', {'form': form})
+        else:
+            return render(request, 'change_password.html', {'form': form})
+    else:
+        return render(request, 'change_password.html', {'form': form})
