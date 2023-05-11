@@ -1,22 +1,33 @@
 {% extends 'base.html' %}
 
 {% block 'content' %}
-    <center>
-        <br><br><br><br><br><br><br>
+    <div class="container-edit-profile">
         <form action="{% url 'edit_profile' data_profile.pk %}" method="post">{% csrf_token %}
-            <label>Nome</label>
-            <input type="text" name="first_name" id="id_first_name" placeholder="Nome" value={{data_profile.user_profile.first_name}}>
-            <label>Sobrenome</label>
-            <input type="text" name="last_name" id="id_last_name" placeholder="Sobrenome" value={{data_profile.user_profile.last_name}}>
-            <label>E-mail</label>
-            <input type="text" name="email" id="id_email" placeholder="E-mail" value={{data_profile.user_profile.email}}>
-            <label>Telefone</label>
-            {{form.cell_phone}}
-            <label>CPF</label>
-            <input type="text" name="cpf" id="id_cpf" placeholder="cpf" value={{data_profile.cpf}} readonly>
-            <button type="submit">Atualizar</button>
+            <div class="form-group">
+                <label>Nome</label>
+                <input type="text" name="first_name" id="id_first_name" placeholder="Nome" value={{data_profile.user_profile.first_name}}>
+            </div>
+            <div class="form-group">
+                <label>Sobrenome</label>
+                <input type="text" name="last_name" id="id_last_name" placeholder="Sobrenome" value={{data_profile.user_profile.last_name}}>
+            </div>
+            <div class="form-group">
+                <label>E-mail</label>
+                <input type="text" name="email" id="id_email" placeholder="E-mail" value={{data_profile.user_profile.email}}>
+            </div>
+            <div class="form-group">
+                <label>Telefone</label>
+                {{form.cell_phone}}
+            </div>
+            <div class="form-group">
+                <label>CPF</label>
+                <input type="text" name="cpf" id="cpf" placeholder="cpf" value={{data_profile.cpf}} readonly>
+            </div>
+            <div class="btn-alter-container-profile">
+                <button type="submit" id="btn-alter-profile">Atualizar</button>
+            </div>
         </form>
-    </center>
+    </div>
 {% endblock %}
 
 {% block 'script' %}

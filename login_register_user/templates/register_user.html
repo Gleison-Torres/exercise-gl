@@ -4,26 +4,72 @@
 
 
 {% block 'content' %}
-    <div class="form-register-container">
-        <form action="{% url 'register_validation' %}" method="post">
-            {% csrf_token %}
-            <div class="form-register">
-                {% for form in forms %}
-                    <div class="input-container">
-                        <div class="labels-register">
-                            {{form.label}}
-                        </div>
-                        <div class="input-register">
-                            {{form}}
-                        </div>
-                        <p>{{form.errors}}</p>
-                    </div>
-                {% endfor %}
+    <div class="container-edit-profile">
+        <form action="{% url 'register_validation' %}" method="post">{% csrf_token %}
+            <div class="form-group">
+                {{forms.first_name.label}}
+                {{forms.first_name}}
             </div>
+            <div class="form-profile-errors">
+                {{forms.errors.first_name}}
+            </div>
+            <div class="form-group">
+                {{forms.last_name.label}}
+                {{forms.last_name}}
+            </div>
+            <div class="form-profile-errors">
+                {{forms.errors.last_name}}
+            </div>
+            <div class="form-group">
+                {{forms.username.label}}
+                {{forms.username}}
+            </div>
+            <div class="form-profile-errors">
+                {{forms.errors.username}}
+            </div>
+            <div class="form-group">
+                {{forms.email.label}}
+                {{forms.email}}
+            </div>
+            <div class="form-profile-errors">
+                {{forms.errors.email}}
+            </div>
+            <div class="form-group">
+                {{forms.cell_phone.label}}
+                {{forms.cell_phone}}
+            </div>
+            <div class="form-profile-errors">
+                {{forms.errors.cell_phone}}
+            </div>
+            <div class="form-group">
+                {{forms.cpf.label}}
+                {{forms.cpf}}
+            </div>
+            <div class="form-profile-errors">
+                {{forms.errors.cpf}}
+            </div>
+            <hr>
+            <div class="form-group">
+                {{forms.password.label}}
+                {{forms.password}}
+            </div>
+            <div class="form-password-errors">
+                {{forms.errors.password}}
+            </div>
+            <div class="form-group">
+                {{forms.confirm_password.label}}
+                {{forms.confirm_password}}
+            </div>
+            <div class="form-password-errors">
+                {{forms.errors.confirm_password}}
+            </div>
+            <div class="messages-help-text">
+                <br>
+                {{forms.password.help_text}}
+            </div>
+
             <div class="button-register">
-                <button class="btn-register" type="submit">
-                    Cadastrar
-                </button>
+                <button class="btn-register" type="submit">Cadastrar</button>
             </div>
         </form>
     </div>

@@ -19,13 +19,17 @@ class RegisterForm(forms.ModelForm):
     password = forms.CharField(
         label='Senha',
         required=True,
+        strip=False,
         widget=forms.PasswordInput(attrs={'placeholder': 'Senha'}),
+        help_text='A senha deve conter pelo menos 8 caracteres, ' 
+                  'incluir letras maiúsculas, minúsculas, números e caracteres especiais.'
     )
 
     confirm_password = forms.CharField(
-        label='Confirme a senha',
+        label='Confirmar senha',
         widget=forms.PasswordInput(attrs={'placeholder': 'Confirme a senha'}),
         required=True,
+        strip=False
     )
 
     username = forms.CharField(

@@ -1,25 +1,24 @@
 from django.shortcuts import render, redirect
-from . import models
+from . import models, forms
 from login_register_user.models import DataUser
-from . import forms
-from django.contrib import messages
-from django.http import Http404
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import update_session_auth_hash
+from django.contrib import messages
+from django.http import Http404
 
 
-@login_required(redirect_field_name='next', login_url='login')
+@login_required(login_url='login')
 def my_profile(request):
     return render(request, 'my_profile.html')
 
 
-@login_required(redirect_field_name='next', login_url='login')
+@login_required(login_url='login')
 def my_address(request):
     address = models.AddressUser.objects.filter(user=request.user)
     return render(request, 'my_address.html', {'address': address})
 
 
-@login_required(redirect_field_name='next', login_url='login')
+@login_required(login_url='login')
 def add_address(request):
     if request.method == 'POST':
         form_add_address = forms.AddressForm(request.POST)
@@ -45,7 +44,7 @@ def delete_address(request, pk):
     return redirect('address')
 
 
-@login_required(redirect_field_name='next', login_url='login')
+@login_required(login_url='login')
 def edit_address(request, pk):
     address = models.AddressUser.objects.get(id=pk, user=request.user)
     form = forms.AddressForm(request.POST or None, instance=address)
@@ -108,6 +107,7 @@ def edit_profile(request, pk):
         return render(request, 'edit_profile.html', context)
 
 
+@login_required(login_url='login')
 def change_password(request):
     form = forms.ChangePassword(request.user, request.POST or None)
     if request.method == 'POST':

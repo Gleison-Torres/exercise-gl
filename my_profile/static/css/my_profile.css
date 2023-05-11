@@ -193,13 +193,14 @@
 
 /**/
 .form-edit-address, .form-add-address {
-    background: #4d004d;
-    color: #fff;
+    background: #F0FFFF;
+    color: #000000;
     width: 710px;
     height: 85%;
     margin-top: 30px;
     padding: 40px;
     border-radius: 25px;
+    box-shadow: 0px 0px 10px 0px black;
 }
 
 
@@ -519,4 +520,125 @@ td, th {
 
 #password {
     color: #4d004d;
+}
+
+.message-error-password {
+    color: red;
+    padding:10px;
+}
+
+.messages-help-text {
+    font-weight: bold;
+    color: #000000;
+    padding:10px;
+}
+
+.container-edit-password {
+    width: 70%;
+    background-color:#F0FFFF;
+    margin:0 auto;
+    margin-top:150px;
+    margin-bottom:220px;
+    padding: 60px;
+    border-radius: 20px;
+    box-shadow: 0px 0px 10px 0px black;
+}
+
+.btn-alterar-container {
+    margin-left: 350px;
+    margin-top:30px;
+
+}
+
+#btn-alterar {
+    width:120px;
+    height:30px;
+    border-radius: 10px;
+    font-weight: bold;
+}
+
+.form-group {
+    padding:9px;
+}
+
+#id_old_password {
+    width:52%;
+    padding: 5px;
+    border-radius:10px;
+    margin-left:54px;
+}
+
+#id_new_password1 {
+    width:52%;
+    padding: 5px;
+    border-radius:10px;
+    margin-left:62px;
+}
+
+#id_new_password2 {
+    width:52%;
+    padding: 5px;
+    border-radius:10px;
+}
+
+
+.container-edit-profile {
+    width: 50%;
+    background-color:#F0FFFF;
+    margin:0 auto;
+    margin-top:150px;
+    margin-bottom:220px;
+    padding: 60px;
+    border-radius: 20px;
+    box-shadow: 0px 0px 10px 0px black;
+}
+
+
+#id_first_name {
+    width:52%;
+    padding: 5px;
+    border-radius:10px;
+    margin-left: 50px;
+}
+
+#id_last_name {
+    width:52%;
+    padding: 5px;
+    border-radius:10px;
+    margin-left: 8px;
+}
+
+#id_email {
+    width:52%;
+    padding: 5px;
+    border-radius:10px;
+    margin-left:46px;
+}
+
+#id_cell_phone {
+    width:52%;
+    padding: 5px;
+    border-radius:10px;
+    margin-left:30px;
+}
+
+#cpf {
+    width:52%;
+    padding: 5px;
+    border-radius:10px;
+    margin-left: 58px;
+    cursor: not-allowed;
+    background: #DCDCDC;
+    font-weight: bold;
+}
+
+.btn-alter-container-profile {
+    margin-left: 250px;
+    margin-top:30px;
+}
+
+#btn-alter-profile {
+    width:120px;
+    height:30px;
+    border-radius: 10px;
 }
