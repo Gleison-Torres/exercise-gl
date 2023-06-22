@@ -3,99 +3,99 @@
 {% block 'title' %}Endereços{% endblock %}
 
 {% block 'content' %}
-    <div class="info-container">
-        <div class="profile-container-data">
-            <div class="my-info">
-                <div class="title-info">
-                    <h1>Dados cadastrais</h1>
-                </div>
-                <table  class="table-container-info">
-                    <thead class="header-address">
-                        <tr>
-                            <th class="th-info">Nome completo</th>
-                            <th class="th-info">E-mail</th>
-                            <th class="th-info">Telefone</th>
-                            <th class="th-info">CPF</th>
-                            <th class="th-info">Editar dados</th>
-                            <th class="th-info">Alterar senha</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>{{user_info.user_profile.first_name}} {{user_info.user_profile.last_name}}</td>
-                            <td>{{user_info.user_profile.email}}</td>
-                            <td>{{ user_info.cell_phone }}</td>
-                            <td>{{ user_info.cpf }}</td>
-                            <td>
-                                <div class="manage-info-container">
-                                    <div class="btn-edit-content">
-                                        <a href="{% url 'edit_profile' user_info.pk %}" id="btn-edit-content">
-                                            <i title="Editar endereço" class="fa-regular fa-pen-to-square"></i>
-                                        </a>
-                                    </div>
-                                </div>
-                            </td>
-                            <td>
-                                <div class="manage-info-container">
-                                    <div class="btn-edit-content">
-                                        <a href="{% url 'change_password' %}">
-                                            <i title="Alterar senha" id="password" class="fa-solid fa-key"></i>
-                                        </a>
-                                    </div>
-                                </div>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
+<!--conteudo das abas -->
+    <section class="section-user-info">
+        <div class="info-container">
+            <div class="title">
+                <h1>Dados cadastrais</h1>
             </div>
-        </div>
-        <div class="address-container-data">
-            {% if address %}
-            <div class="address-info">
-                <div class="title-info">
-                    <h1>Endereço principal</h1>
-                </div>
-                <table  class="table-container-info">
-                    <thead class="header-address">
-                        <tr>
-                            <th class="th-info">Destinatário</th>
-                            <th class="th-info">CEP</th>
-                            <th class="th-info">Rua/Avenida	</th>
-                            <th class="th-info">Número</th>
-                            <th class="th-info">Complemento</th>
-                            <th class="th-info">Bairro</th>
-                            <th class="th-info">Cidade</th>
-                            <th class="th-info">UF</th>
-                        </tr>
-                    </thead>
-                    {% for add in address %}
-                    <tbody>
-                        <tr>
-                            <td>{{ add.sender_name }}</td>
-                            <td>{{ add.postal_code}}</td>
-                            <td>{{ add.street_address }}</td>
-                            <td>{{ add.number_address }}</td>
-                            <td>{{ add.additional_info }}</td>
-                            <td>{{ add.neighborhood }}</td>
-                            <td>{{ add.city }}</td>
-                            <td>{{ add.state}}</td>
-                        </tr>
-                    </tbody>
-                    {% endfor %}
-                </table>
-            </div>
-            <div class="btn-alter-address-container">
-                <a href="{% url 'address' %}" class="btn-alter-address">Alterar endereço principal</a>
-            </div>
-        </div>
 
-        {% else %}
-        <div class="empty-list-address-principal">
-            <h1>Você não tem um endereço principal!</h1>
-            <div class="btn-add-address-container">
-                <a href="{% url 'address' %}" class="btn-add-address">Escolher endereço principal</a>
+            <!--Abas-->
+            <div class="tabs">
+                <button class="tab-button" id="tabStandard"  onclick="openTab(event, 'info')">Informações de usuário</button>
+                <button class="tab-button" id="tabSecondary" onclick="openTab(event, 'address')" >Endereço principal</button>
+            </div>
+
+            <!--conteudo das abas -->
+            <div id="info" class="content">
+                <div class="info-group">
+                    <div>
+                        <label>Nome completo</label>
+                        <input type="text" value="{{user_info.user_profile.first_name}} {{user_info.user_profile.last_name}}" readonly>
+                    </div>
+                    <div>
+                        <label>E-mail</label>
+                        <input type="email" value="{{user_info.user_profile.email}}" readonly>
+                    </div>
+                </div>
+                <div class="info-group">
+                    <div>
+                        <label>Telefone</label>
+                        <input type="text" value="{{ user_info.cell_phone }}" readonly>
+                    </div>
+                    <div>
+                        <label>CPF</label>
+                        <input type="text" placeholder="CPF" value="{{ user_info.cpf }}" readonly>
+                    </div>
+                </div>
+                <div class="edit-container">
+                    <a href="{% url 'edit_profile' user_info.pk %}"><i title="Editar dados" class="fa-regular fa-pen-to-square"></i></a>
+                </div>
+            </div>
+
+            <div id="address" class="content">
+                {% if address %}
+                <div id="street" class="info-group">
+                    <div>
+                        <label>Rua/Avenida</label>
+                        <input type="text" value="" readonly>
+                    </div>
+                </div>
+                <div class="info-group">
+                    <div>
+                        <label>Número</label>
+                        <input type="text" placeholder="Número" value="19" readonly>
+                    </div>
+                    <div>
+                        <label>Complemento</label>
+                        <input type="text" placeholder="Complemento" value="A" readonly>
+                    </div>
+                    <div>
+                        <label>Bairro</label>
+                        <input type="text" placeholder="Bairro" value="JD Irene/Guaianases" readonly>
+                    </div>
+                </div>
+                <div class="info-group">
+                    <div>
+                        <label>Cidade</label>
+                        <input type="text" placeholder="Cidade" value="São Paulo" readonly>
+                    </div>
+                    <div>
+                        <label>Estado</label>
+                        <input type="text" placeholder="UF" value="SP" readonly>
+                    </div>
+                    <div>
+                        <label>CEP</label>
+                        <input type="text" placeholder="CEP" value="08290-680" readonly>
+                    </div>
+                </div>
+                <div class="edit-container">
+                    <a href="#"><i title="Editar dados" class="fa-regular fa-pen-to-square"></i></a>
+                </div>
+                {% else %}
+                <div class="info-address">
+                    <h1>Você ainda não tem um endereço principal cadastrado!</h1>
+                    <div>
+                        <a href="{% url 'address' %}">Add endereço</a>
+                    </div>
+                </div>
+                {% endif %}
             </div>
         </div>
-        {% endif %}
-    </div>
+    </section>
+{% endblock %}
+
+{% block 'script' %}
+
+
 {% endblock %}

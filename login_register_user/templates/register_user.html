@@ -4,102 +4,79 @@
 
 
 {% block 'content' %}
-    <div class="container-edit-profile">
+    <section class="section-register">
         <form action="{% url 'register_validation' %}" method="post">{% csrf_token %}
             <div class="form-group">
-                {{forms.first_name.label}}
-                {{forms.first_name}}
-            </div>
-            <div class="form-profile-errors">
-                {{forms.errors.first_name}}
-            </div>
-            <div class="form-group">
-                {{forms.last_name.label}}
-                {{forms.last_name}}
-            </div>
-            <div class="form-profile-errors">
-                {{forms.errors.last_name}}
-            </div>
-            <div class="form-group">
-                {{forms.username.label}}
-                {{forms.username}}
-            </div>
-            <div class="form-profile-errors">
-                {{forms.errors.username}}
-            </div>
-            <div class="form-group">
-                {{forms.email.label}}
-                {{forms.email}}
-            </div>
-            <div class="form-profile-errors">
-                {{forms.errors.email}}
-            </div>
-            <div class="form-group">
-                {{forms.cell_phone.label}}
-                {{forms.cell_phone}}
-            </div>
-            <div class="form-profile-errors">
-                {{forms.errors.cell_phone}}
-            </div>
-            <div class="form-group">
-                {{forms.cpf.label}}
-                {{forms.cpf}}
-            </div>
-            <div class="form-profile-errors">
-                {{forms.errors.cpf}}
-            </div>
-            <hr>
-            <div class="form-group">
-                {{forms.password.label}}
-                {{forms.password}}
-            </div>
-            <div class="form-password-errors">
-                {{forms.errors.password}}
-            </div>
-            <div class="form-group">
-                {{forms.confirm_password.label}}
-                {{forms.confirm_password}}
-            </div>
-            <div class="form-password-errors">
-                {{forms.errors.confirm_password}}
-            </div>
-            <div class="messages-help-text">
-                <br>
-                {{forms.password.help_text}}
+                <div class="form-group-col1">
+                    {{forms.first_name.label}}
+                    {{forms.first_name}}
+                </div>
+                <div class="form-group-col2">
+                    {{forms.last_name.label}}
+                    {{forms.last_name}}
+                </div>
             </div>
 
-            <div class="button-register">
+            <div class="form-group">
+                <div class="form-group-col1">
+                    {{forms.username.label}}
+                    {{forms.username}}
+                    <div class="error-messages">
+                        {{forms.errors.username}}
+                    </div>
+                </div>
+
+                <div class="form-group-col2">
+                    {{forms.email.label}}
+                    {{forms.email}}
+                    <div class="error-messages">
+                        {{forms.errors.email}}
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="form-group-col1">
+                    {{forms.cell_phone.label}}
+                    {{forms.cell_phone}}
+                </div>
+                <div class="form-group-col2">
+                    {{forms.cpf.label}}
+                    {{forms.cpf}}
+                    <div class="error-messages">
+                        {{forms.errors.cpf}}
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="form-group-col1">
+                    {{forms.password.label}}
+                    {{forms.password}}
+                    <div class="error-messages">
+                        {{forms.errors.password}}
+                    </div>
+                </div>
+                <div class="form-group-col2">
+                    {{forms.confirm_password.label}}
+                    {{forms.confirm_password}}
+                    <div class="error-messages">
+                        {{forms.errors.confirm_password}}
+                    </div>
+                </div>
+            </div>
+            <div class="helptext-container">
+                <strong>A senha deve conter pelo menos 8 caracteres, incluir letras maiúsculas, minúsculas, números e caracteres especiais.</strong>
+            </div>
+            <div class="btn-register-container">
                 <button class="btn-register" type="submit">Cadastrar</button>
             </div>
         </form>
-    </div>
+    </section>
 {% endblock %}
 
 {% block 'script' %}
 
 <!-- Mascara telefone início-->
 
-    var SPMaskBehavior = function (val) {
-        return val.replace(/\D/g, '').length === 11 ? '(00) 00000-0000' : '(00) 0000-00009';
-    },
-
-    spOptions = {
-        onKeyPress: function(val, e, field, options) {
-            field.mask(SPMaskBehavior.apply({}, arguments), options);
-        }
-    };
-
-    $('#id_cell_phone').mask(SPMaskBehavior, spOptions);
-
-<!-- Mascara telefone fim-->
-
-
-<!-- Mascara CPF início -->
-
-    $(document).ready(function(){
-        $('#id_cpf').mask('000.000.000-00');
-    });
-
-<!-- Mascara CPF fim -->
 
 {% endblock %}

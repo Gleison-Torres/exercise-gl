@@ -1,644 +1,681 @@
 /* my_profile.html */
 
-.profile-container {
-    width: 100%;
-    margin-top: 120px;
-    text-align: center;
-    height: 50vh;
-    margin-bottom: 50px;
-}
-
-.my-profile {
-    background-color: #4d004d;
-    padding: 20px;
-    width: 600px;
-    margin: 0 auto;
-    border-radius: 25px;
-    display: flex;
-    padding-left: 70px;
-}
-
-.fa-solid {
-    font-size: 40px;
-    color: #fff;
-}
-
-.user {
-    margin-left: 50px;
-    color: #fff;
-}
-
-
-.user-info {
-    background-color: #4d004d;
-    width: 600px;
-    margin: 0 auto;
-    margin-top: 25px;
-    text-align: left;
-    border-radius: 20px 20px 0px 0px;
-    padding: 20px;
-}
-
-.user-info i {
-    margin-left: 30px;
-}
-
-
-.info-button {
-    display: inline-block;
-    margin-left: 23px;
-}
-
-
-.user-address {
-    background-color: #4d004d;
-    width: 600px;
-    margin: 0 auto;
-    text-align: left;
-    border-radius: 0px 0px 20px 20px;
-    padding: 20px;
-}
-
-
-.info-address {
-    margin-left: 50px;
-}
-
-
-.address-button {
-    display: inline-block;
-    margin-left: 50px;
-}
-/* my_info.html*/
-.profile-container-data {
-    margin-top:40px;
-    height:300px;
-    width: 90%;
-    margin:0 auto;
-}
-
-.address-container-data {
-    height:300px;
-    padding-left:90px;
-    margin-top: flex;
-    width: 100%;
-}
-
-.info-container {
-    width: 100%;
-    height:100vh;
-    margin-top:50px;
-}
-
-.my-info {
-    background: #4d004d;
-    text-align: center;
-    border-radius: 20px 20px 0px 0px;
-    height: 35%;
-    color: #fff;
-    margin-top: 100px;
-    display: inline-block;
-    width: 90%;
-    margin-left: 5%;
-}
-
-.address-info {
-    background: #4d004d;
-    text-align: center;
-    border-radius: 20px 20px 0px 0px;
-    height: 104px;
-    width:92%;
-    color: #fff;
-    margin-top: 40px;
-    display: inline-block;
-}
-
-.title-info {
-    padding: 10px;
-}
-
-.table-container-info {
-    color: #000000;
-    border-radius: 0px 0px 10px 10px;
-    height: 20px;
-    border: 6px solid #4d004d;
-    border-top: none;
-    font-weight: bold;
-    width:100%;
-}
-
-.th-info {
-    border: solid #4d004d;
-    width:250px;
-}
-
-.manage-info-container {
-    display: flex;
-}
-
-.empty-list-address-principal {
-    color: #fff;
-    background-color: #4d004d;
-    width: 720px;
-    text-align: center;
-    padding: 30px;
-    border-radius: 20px;
-    margin-top: 100px;
-    margin-left:290px;
-}
-
-/* my_address.html */
-
-.address-container {
-    width: 100%;
-    display: flex;
-    margin-top: 70px;
-    margin-bottom: 60px;
-    justify-content: center;
-    align-items: center;
-}
-
-
-.empty-list-address {
-    color: #fff;
-    background-color: #4d004d;
-    width: 720px;
-    text-align: center;
-    padding: 30px;
-    border-radius: 20px;
-    margin-top: 100px;
-}
-
-#id_type_address {
-    margin-top: 8px;
-    margin-left:10px;
-}
-
-
-.labels {
-    margin-left: 10px;
-}
-
-
-/* edit_address.html */
-
-.edit-address-container, .add-address-container {
-    width: 100%;
-    height: 660px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top:40px;
-}
-
-/**/
-.form-edit-address, .form-add-address {
-    background: #F0FFFF;
-    color: #000000;
-    width: 710px;
-    height: 85%;
-    margin-top: 30px;
-    padding: 40px;
-    border-radius: 25px;
-    box-shadow: 0px 0px 10px 0px black;
-}
-
-
-#edit_sender_name, #id_sender_name {
-    width: 68%;
-    padding: 5px;
-    border-radius: 10px;
-    margin-top: 5px;
-    margin-left: 7px;
-    margin-bottom: 15px;
-    label: 10px;
-}
-
-
-#edit_postal_code, #id_postal_code {
-    margin-left: 7px;
-    padding: 5px;
-    border-radius: 10px;
-    margin-top: 5px;
-    margin-bottom: 15px;
-    width:30%;
-}
-
-.streets-number-container {
-    display: flex;
-}
-
-.streets-container {
-    width: 70%;
-    margin-right: 10px;
-}
-
-
-#edit_street_address, #id_street_address {
-    width: 97%;
-    padding: 5px;
-    border-radius: 10px;
-    margin-top: 5px;
-    margin-left: 7px;
-    margin-bottom: 15px;
-    label: 10px;
-}
-
-
-.number-container {
-    width: 30%;
-}
-
-
-#edit_number_address, #id_number_address {
-    margin-left: 7px;
-    padding: 5px;
-    border-radius: 10px;
-    margin-top: 5px;
-    margin-bottom: 15px;
-    width:100%;
-}
-
-.neighborhood-info-container, .city-state-container {
-    display: flex;
-}
-
-.additional-info-container, .city-container {
-    width: 52%;
-    margin-right: 10px;
-}
-
-#edit_additional_info, #id_additional_info {
-    margin-left: 7px;
-    width: 96%;
-    padding: 5px;
-    border-radius: 10px;
-    margin-top: 5px;
-    margin-bottom: 15px;
-}
-
-#edit_city, #id_city {
-    margin-left: 7px;
-    width: 96%;
-    padding: 5px;
-    border-radius: 10px;
-    margin-top: 5px;
-    margin-bottom: 15px;
-    cursor: not-allowed;
-    background: #DCDCDC;
-    font-weight: bold;
-}
-
-.neighborhood-container, .state-container {
-    width: 50%;
-}
-
-#edit_state, #id_state {
-    margin-left: 7px;
-    width: 98%;
-    padding: 5px;
-    border-radius: 10px;
-    margin-top: 5px;
-    margin-bottom: 15px;
-    cursor: not-allowed;
-    background: #DCDCDC;
-    font-weight: bold;
-}
-
-
-#edit_neighborhood, #id_neighborhood {
-    margin-left: 7px;
-    width: 98%;
-    padding: 5px;
-    border-radius: 10px;
-    margin-top: 5px;
-    margin-bottom: 15px;
-}
-
-.select-container {
-    width:100%;
-    display: flex;
-}
-
-.type-address-container {
-    width: 50%;
-}
-
-.principal-address-container {
-    width: 50%;
-    display: flex;
-    align-items: center;
-    padding-left: 25px;
-}
-
-#id_active {
-    margin-left:10px;
-    width: 20px;
-    border: solid;
-}
-
-
-/*  Remoção da spin-button no input type number */
-input[type=number]::-webkit-inner-spin-button {
-    -webkit-appearance: none;
-}
-
-/* Buttons */
-.btn-add-address-container {
-    padding: 15px;
-    margin-top: 15px;
-}
-
-.btn-address-container {
-    margin-top: 10px;
-    padding: 20px;
-    text-align: center;
-}
-
-.btn-add-address {
-    padding: 8px;
-    width: 150px;
-    border: double;
-    border-radius: 10px;
-    font-weight: bold;
-    font-size: 15px;
-    background: #e6e6ff;
-    color: #000000;
-}
-
-#btn-save-address {
-    padding: 8px;
-    width: 120px;
-    margin-top: 40px;
-    margin-left: 263px;
-    border-radius: 10px;
-    font-weight: bold;
-    cursor: pointer;
-}
-
-.btn-alter-address-container {
-    padding: 5px;
-    margin-top: 100px;
-    height:100px;
-}
-
-.btn-alter-address {
-    padding: 8px;
-    width: 150px;
-    border: double;
-    border-radius: 10px;
-    font-weight: bold;
-    font-size: 15px;
-    background: #e6e6ff;
-    color: #000000;
-    margin-left: 540px;
-
-}
-/* Table */
-
-.table-container {
-    margin-top: 70px;
-    border: solid;
-    border-radius: 10px;
-}
-
-.header-address {
-    background: #4d004d;
-    color: #fff;
-    border-radius: 10px;
-}
-
-td, th {
-    padding: 10px;
-    width: 170px;
-}
-
-.number-table {
-    width: 20px;
-}
-
-.cep-table {
-    width: 100px;
-}
-
-.state-table, .type-table {
-    width: 70px;
-}
-
-.manage-table {
-    width: 140px;
-    background-color: #f0f0f5;
-}
-
-
-.manage-address-container {
-    display: flex;
-    width: 100%;
-}
-
-
-.btn-delete {
-    width: 50%;
-    text-align: right;
-}
-
-
-#btn-delete {
-    font-weight: bold;
-    font-size: 40px;
-    border: none;
-    cursor: pointer;
-    background-color: #f0f0f5;
-}
-
-
-.fa-trash-can {
-    color: #4d004d;
-}
-
-
-.btn-edit {
-    width: 50%;
-    float: left;
-}
-
-
-#btn-edit {
-    color: #4d004d;
-    font-weight: bold;
-    font-size: 40px;
-    background-color: #f0f0f5;
-    border: none;
-    cursor: pointer;
-}
-
-
-/* My_info.html */
-
-.my-info-container {
-    width:100%;
-    height:67vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top:40px;
-}
-
-.my-info-content {
-    background: #4d004d;
-    width: 850px;
-    color: #fff;
-    height: 200px;
-    border-radius: 20px;
-}
-
-.name-container, .email-container {
-    padding: 10px;
-}
-
-.labels-info {
-    font-weight: bold;
-}
-
-.btn-edit-content {
-    width: 100%;
-    text-align: center;
-}
-
-#btn-edit-content {
-    color: #4d004d;
-    font-weight: bold;
-    font-size: 40px;
-    background-color: #fff;
-    border: none;
-    cursor: pointer;
-}
-
-.fa-regular {
-    margin-left:8px;
-}
-
-#password {
-    color: #4d004d;
-}
-
-.message-error-password {
-    color: red;
-    padding:10px;
-}
-
-.messages-help-text {
-    font-weight: bold;
-    color: #000000;
-    padding:10px;
-}
-
-.container-edit-password {
-    width: 70%;
-    background-color:#F0FFFF;
-    margin:0 auto;
-    margin-top:150px;
-    margin-bottom:220px;
-    padding: 60px;
-    border-radius: 20px;
-    box-shadow: 0px 0px 10px 0px black;
-}
-
-.btn-alterar-container {
-    margin-left: 350px;
-    margin-top:30px;
-
-}
-
-#btn-alterar {
-    width:120px;
-    height:30px;
-    border-radius: 10px;
-    font-weight: bold;
-}
-
-.form-group {
-    padding:9px;
-}
-
-#id_old_password {
-    width:52%;
-    padding: 5px;
-    border-radius:10px;
-    margin-left:54px;
-}
-
-#id_new_password1 {
-    width:52%;
-    padding: 5px;
-    border-radius:10px;
-    margin-left:62px;
-}
-
-#id_new_password2 {
-    width:52%;
-    padding: 5px;
-    border-radius:10px;
-}
-
-
-.container-edit-profile {
-    width: 50%;
-    background-color:#F0FFFF;
-    margin:0 auto;
-    margin-top:150px;
-    margin-bottom:220px;
-    padding: 60px;
-    border-radius: 20px;
-    box-shadow: 0px 0px 10px 0px black;
-}
-
-
-#id_first_name {
-    width:52%;
-    padding: 5px;
-    border-radius:10px;
-    margin-left: 50px;
-}
-
-#id_last_name {
-    width:52%;
-    padding: 5px;
-    border-radius:10px;
-    margin-left: 8px;
-}
-
-#id_email {
-    width:52%;
-    padding: 5px;
-    border-radius:10px;
-    margin-left:46px;
-}
-
-#id_cell_phone {
-    width:52%;
-    padding: 5px;
-    border-radius:10px;
-    margin-left:30px;
-}
-
-#cpf {
-    width:52%;
-    padding: 5px;
-    border-radius:10px;
-    margin-left: 58px;
-    cursor: not-allowed;
-    background: #DCDCDC;
-    font-weight: bold;
-}
-
-.btn-alter-container-profile {
-    margin-left: 250px;
-    margin-top:30px;
-}
-
-#btn-alter-profile {
-    width:120px;
-    height:30px;
-    border-radius: 10px;
-}
+    .section-profile {
+        background-color: aliceblue;
+        padding-bottom: 110px;
+        padding-top: 170px;
+    }
+
+    .profile-container {
+        width: 50%;
+        max-height: 71vh;
+        border-radius: 30px;
+        background-color: rgb(230, 236, 241);
+        font-family:Arial, Helvetica, sans-serif;
+        text-align: center;
+        margin: 0 auto;
+        box-shadow: 0px 0px 12px 0px rgb(110, 93, 93);
+    }
+
+    .username-container {
+        display: flex;
+        justify-content: center;
+        background-color:rgb(104, 104, 252, 0.9);
+        box-shadow: 0px 0px 5px 0px rgb(110, 93, 93);
+
+        color: aliceblue;
+        border-radius: 30px 30px 0px 0px;
+        width: 100%;
+        margin: auto;
+        padding: 30px 0px 20px 0px;
+    }
+
+    .username-container i {
+        font-size: 40px;
+        padding-right: 15px;
+    }
+
+    .my-info-container:hover, .my-address-container:hover {
+        border: groove;
+        transition:0.5s;
+        background-color: rgb(92, 248, 92);
+    }
+
+    .my-address-container {
+        border-radius: 0px 0px 30px 30px;
+    }
+
+    .my-info-container a, .my-address-container a {
+        display: flex;
+        justify-content: center;
+        padding: 30px 0px 20px 0px;
+        text-decoration: none;
+        color: black;
+    }
+
+    .my-info-container i {
+        font-size: 40px;
+        padding-right: 15px;
+        color: black;
+    }
+
+    .my-address-container i {
+        font-size: 40px;
+        color: black;
+        margin-right: 35px;
+    }
+
+    .my-address-container h1 {
+        color: black;
+    }
+
+    .button-menu-container img {
+        display: none;
+    }
+
+    #itens {
+        display: none;
+    }
+
+    .info-address {
+        text-align: center;
+        padding:40px;
+    }
+
+    .info-address div {
+        margin-top:20px;
+        padding:30px;
+    }
+
+    .info-address div a {
+        background: rgb(230, 236, 241);
+        border-radius: 10px;
+        padding:15px;
+        color: black;
+        text-decoration: none;
+        box-shadow: 0px 0px 12px 0px rgb(110, 93, 93);
+        }
+
+
+
+    /* Mobile */
+    @media (min-width:280px) and (max-width:819px) {
+        /* Navbar*/
+        .content-navbar li {
+            display: none;
+        }
+
+        #menu-mobile {
+            display: block;
+            position: relative;
+            bottom: 10px;
+            cursor: pointer;
+        }
+
+
+        /* Menu profile*/
+        .profile-container {
+            width: 100%;
+            height: 33vh;
+            background-color: aliceblue;
+            border-radius: 1px;
+            box-shadow: none;
+        }
+
+        .username-container i, .my-info-container i, .my-address-container i, .username-container {
+            display: none;
+        }
+
+        .my-address-container {
+            border-radius: 1px;
+        }
+
+        .my-info-container a, .my-address-container a {
+            border: solid 1px rgb(165, 194, 219);
+        }
+    }
+
+    @media (min-width: 820px) and (max-width: 1102px){
+        /* Menu profile*/
+        .profile-container {
+            width: 100%;
+            height: 33vh;
+            background-color: aliceblue;
+            border-radius: 1px;
+            box-shadow: none;
+        }
+
+        .username-container i, .my-info-container i, .my-address-container i, .username-container {
+            display: none;
+        }
+
+        .my-address-container {
+            border-radius: 1px;
+        }
+
+        .my-info-container a, .my-address-container a {
+            border: solid 1px rgb(165, 194, 219);
+        }
+
+    }
+
+    @media (min-width: 820px) and (max-width: 1980px) {
+        #itens {
+            display: none;
+        }
+    }
+
+    /* Menu mobile */
+    @media (min-width: 280px) and (max-width:819px) {
+        #itens {
+            background-color: rgb(113, 113, 114);
+            position:fixed;
+            top: 0;
+            right: 0;
+            z-index: 2;
+            width: 100%;
+            height: 100%;
+            transition: all 300ms ease-in-out;
+            transform: translateX(106rem)  ;
+            display: block;
+            overflow-y: auto;
+        }
+
+
+        #itens li {
+            margin-top: 80px;
+            list-style: none;
+            text-align: center;
+            font-size: 40px;
+            cursor: pointer;
+        }
+
+        #itens i {
+            color: red;
+            padding: 10px;
+            font-size: 30px;
+            margin-bottom: 10px;
+            background-color: aliceblue;
+            border-radius: 40px;
+            padding: 15px;
+        }
+
+        #itens a {
+            text-decoration: none;
+            color: aliceblue;
+        }
+    }
+
+/* Section profile */
+
+    .section-user-info {
+        padding: 160px 0px 160px 0px;
+    }
+
+
+    .info-container {
+        width: 80%;
+        background-color: rgb(230, 236, 241);
+        margin: 0 auto;
+        border-radius: 30px;
+        box-shadow: 0px 0px 12px 0px rgb(110, 93, 93);
+    }
+
+    .info-container input {
+        display: block;
+        border: none;
+        background-color:rgb(230, 236, 241);
+        border-bottom: solid 2px;
+        width: 90%;
+        font-size: 20px;
+    }
+
+    .info-container input:focus {
+        outline: 0;
+    }
+
+    .info-container label {
+        font-size: 20px;
+        font-weight: bold;
+    }
+
+    .title {
+        background-color: rgb(104, 104, 252);
+        width: 100%;
+        text-align: center;
+        padding: 20px;
+        border-radius: 30px 30px 0px 0px;
+        color: aliceblue;
+    }
+
+    .info-group {
+        display: flex;
+        margin-top: 20px;
+    }
+
+    .info-group div {
+        width: 50%;
+        padding: 20px;
+        margin-left: 50px;
+    }
+
+    .edit-container {
+        margin-top: 40px;
+        text-align: center;
+        padding-bottom: 50px;
+    }
+
+    .edit-container i {
+        font-size: 50px;
+    }
+
+    /* Abas */
+    .tabs {
+        display: flex;
+    }
+
+    #tabStandard {
+        border-radius: 0px 0px 20px 0px;
+    }
+
+    #tabSecondary {
+        border-radius: 0px 0px 0px 20px;
+    }
+
+    .tab-button {
+        width: 50%;
+        background-color: rgb(104, 104, 252);
+        color: aliceblue;
+        border: none;
+        padding: 10px;
+        font-size: 20px;
+        font-weight: bold;
+    }
+
+    .tab-button:focus-within {
+        outline: none;
+    }
+
+
+    .tabs button.active {
+        background-color: rgb(230, 236, 241);
+        color: black;
+        border: none;
+    }
+
+    .content {
+        display: none;
+    }
+
+    #street input {
+        width: 122%;
+    }
+
+
+    /*Mobile*/
+
+
+    @media (min-width: 280px) and (max-width:570px) {
+        .info-container {
+            width: 100%;
+            border-radius: 0;
+            box-shadow: none;
+        }
+
+        .title {
+            border-radius: 0px;
+        }
+
+        .info-group {
+            display: block;
+        }
+
+        .info-container input {
+            border: none;
+            width: 220%;
+            border-bottom: solid 1px;
+        }
+
+        .tab-button {
+            font-size: 20px;
+            padding: 25px;
+        }
+
+        .info-group div {
+            margin-left: 10px;
+        }
+
+
+        #street input {
+            width: 220%;
+        }
+
+        body {
+            background-color: rgb(230, 236, 241);
+        }
+    }
+
+    @media (min-width: 571px) and (max-width:1080px) {
+        body {
+            background-color: rgb(230, 236, 241);
+        }
+
+        .info-container {
+            width: 100%;
+            border-radius: 0;
+            box-shadow: none;
+        }
+
+        .title {
+            border-radius: 0px;
+        }
+
+        .info-group {
+            display: block;
+        }
+
+        .info-container input {
+            border: none;
+            width: 200%;
+            border-bottom: solid 1px;
+        }
+
+        .tab-button {
+            font-size: 20px;
+            padding: 25px;
+        }
+
+        .info-group div {
+            margin-left: 10px;
+        }
+
+        #street input {
+            width: 200%;
+        }
+    }
+
+
+/* My address */
+    .section-address {
+        padding-top: 150px;
+        padding-bottom: 165px;
+    }
+
+    .principal-address {
+        text-align: center;
+        padding-bottom: 20px;
+    }
+
+    .address-container {
+        background-color: rgb(230, 236, 241);
+        box-shadow: 0px 0px 12px 0px rgb(110, 93, 93);
+        border-radius: 20px;
+        margin: 0 auto;
+        width: 50%;
+        padding: 40px;
+    }
+
+    .address-container input {
+        border: none;
+        background-color: rgb(230, 236, 241);
+        width: 80%;
+    }
+
+    .address-container input:focus-within {
+        outline: none;
+    }
+
+
+    .address-container label {
+        font-weight: bold;
+    }
+
+
+    .manage-container {
+        text-align: center;
+        display: flex;
+    }
+
+
+
+    .manage-container form {
+        width: 50%;
+        text-align: left;
+    }
+
+    .manage-container form i {
+        font-size: 30px;
+        color:  rgb(71, 63, 63);
+    }
+
+    .manage-container form button {
+        border: none;
+    }
+
+    .manage-container form button:focus-within {
+        outline: none;
+    }
+
+    .btn-edit {
+        width: 50%;
+        text-align: right;
+    }
+
+    .btn-edit i {
+        font-size: 30px;
+        margin-right: 10px;
+        color:  rgb(71, 63, 63);
+    }
+
+    .other-addresses {
+        text-align: center;
+        padding-top: 20px;
+        padding-bottom: 20px;
+    }
+
+    .no-address {
+        background-color: rgb(230, 236, 241);
+        text-align:center;
+        width:50%;
+        margin:0 auto;
+        margin-top:120px;
+        padding: 30px;
+        padding-top:55px;
+        border-radius: 20px;
+        box-shadow: 0px 0px 12px 0px rgb(110, 93, 93)
+    }
+
+
+    .btn-add {
+        padding:30px;
+    }
+
+    .btn-add a {
+        padding: 10px 15px 10px 15px;
+        border-radius:10px;
+        color: black;
+        text-decoration: none;
+        box-shadow: 0px 0px 12px 0px rgb(110, 93, 93)
+
+    }
+    /*Mobile*/
+
+    @media (min-width:280px) and (max-width:1023px) {
+        .address-container {
+            background-color: rgb(230, 236, 241);
+            box-shadow: none;
+            border-radius: 1px;
+            width: 100%;
+        }
+
+
+        .section-address {
+            background-color: rgb(230, 236, 241);
+        }
+
+        .manage-container {
+            padding-top: 25px;
+        }
+
+        .no-address {
+            background-color: rgb(230, 236, 241);
+            width:100%;
+            box-shadow: none;
+        }
+
+        .btn-add {
+            padding-top:50px;
+        }
+
+        .btn-add button {
+            padding: 10px 15px 10px 15px;
+            border-radius:10px;
+        }
+    }
+
+    /* Add address */
+
+    .form-address-container {
+        background-color: rgb(230, 236, 241);
+        box-shadow: 0px 0px 12px 0px rgb(110, 93, 93);
+        margin: 0 auto;
+        width: 60%;
+        padding: 30px;
+        border-radius: 30px;
+    }
+
+    .form-address-container form {
+        margin-left: 40px;
+        margin-top:30px;
+    }
+
+
+    .form-address-container form input {
+        display: block;
+        height: 33px;
+        border-radius: 10px;
+        padding-left: 20px;
+    }
+
+    .btn-add-address {
+        text-align: center;
+        padding: 30px;
+    }
+
+
+    .block-name input {
+        width: 50%;
+    }
+
+    .block-cep, .block-address {
+        padding-top: 15px;
+    }
+
+    .block-address, .checkbox-address {
+        display: flex;
+    }
+
+    .checkbox-address input {
+        margin-left: 10px;
+        width: 20px;
+    }
+
+    .checkbox-address label {
+        margin-top: 4px;
+    }
+
+    .btn-add-address button {
+        width: 100px;
+        padding: 5px;
+        border-radius: 10px;
+    }
+
+    .address-group {
+        width: 50%;
+        padding-right: 25px;
+    }
+
+
+    .number-address input {
+        width: 20%;
+    }
+
+    #id_street_address, #id_additional_info, #id_city {
+        width: 98%;
+    }
+
+    #id_number_address {
+        width:40%;
+    }
+
+    #id_neighborhood, #id_state {
+        width: 80%;
+    }
+
+    #id_city, #id_state {
+        background-color: rgb(218, 217, 217);
+        cursor: not-allowed;
+    }
+
+    .combobox-select {
+        padding: 10px 0px 10px 0px;
+    }
+
+
+
+    /* Mobile */
+    @media (min-width:280px) and (max-width: 820px) {
+        .section-address {
+            background-color: rgb(230, 236, 241);
+        }
+
+        .form-address-container {
+            box-shadow: none;
+            margin: 0;
+            padding: 0px;
+            width: 100%;
+            padding-left: 15px;
+        }
+
+        .form-address-container form {
+            margin-left: 0px;
+
+        }
+
+        .form-address-container input {
+            width: 92%;
+        }
+
+        .address-group {
+            width: 100%;
+            padding-top: 20px;
+        }
+
+        #id_neighborhood, #id_state {
+            width: 98%;
+        }
+
+        .block-address, .checkbox-address {
+            display: block;
+        }
+
+        .checkbox-address {
+            display: flex;
+        }
+
+
+        .checkbox-address label {
+            width: 700px;
+        }
+    }
+
+
+    @media (min-width:821px) and (max-width: 1030px) {
+        .section-address {
+            background-color: white;
+        }
+
+        .form-address-container {
+            width: 90%;
+        }
+    }

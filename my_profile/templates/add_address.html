@@ -4,126 +4,136 @@
 
 
 {% block 'content' %}
-
-    <div class="add-address-container">
-        <div class="form-add-address">
+    <section class="section-address">
+        <div class="form-address-container">
             <form method="post" action="{% url 'add_address' %}">{% csrf_token %}
-                <div class="labels">Nome completo</div>
-                <input type="text" name="sender_name" required maxlength="100" id="id_sender_name">
-
-                <div class="labels">CEP</div>
-                <input type="text" name="postal_code" required maxlength="9" id="id_postal_code">
-                <div class="streets-number-container">
-                    <div class="streets-container">
-                        <div class="labels">Rua/Avenida</div>
-                        <input type="text" name="street_address" required maxlength="200" id="id_street_address">
+                <div class="block-name">
+                    <label>Nome completo</label>
+                    <input type="text" name="sender_name" placeholder="Nome" id="id_sender_name" maxlength="100" required>
+                </div>
+                <div class="block-cep">
+                    <label>CEP</label>
+                    <input type="text" name="postal_code" placeholder="CEP" id="id_postal_code" maxlength="9" required>
+                </div>
+                <div class="block-address">
+                    <div class="address-group">
+                        <label>Rua/Avenida</label>
+                        <input type="text" name="street_address" placeholder="Rua/Avenida" id="id_street_address" maxlength="200" required>
                     </div>
-                    <div class="number-container">
-                        <div class="labels">Número</div>
-                        <input type="number" maxlength="20" name="number_address" required id="id_number_address">
+                    <div class="address-group">
+                        <label>Numero</label>
+                        <input type="number" name="number_address" placeholder="S/N" id="id_number_address" maxlength="20">
                     </div>
                 </div>
-                <div class="neighborhood-info-container">
-                    <div class="additional-info-container">
-                        <div class="labels">Complemento</div>
-                            <input type="text" name="additional_info" maxlength="200" id="id_additional_info">
+                <div class="block-address">
+                    <div class="address-group">
+                        <label>Complemento</label>
+                        <input type="text" name="additional_info" placeholder="Complemento" id="id_additional_info" maxlength="200">
                     </div>
-                    <div class="neighborhood-container">
-                        <div class="labels">Bairro</div>
-                            <input type="text" name="neighborhood" maxlength="200" id="id_neighborhood">
-                    </div>
-                </div>
-
-                <div class="city-state-container">
-                    <div class="city-container">
-                        <div class="labels">Cidade</div>
-                            <input type="text" name="city" readonly maxlength="100" id="id_city">
-                    </div>
-                    <div class="state-container">
-                        <div class="labels">Estado</div>
-                            <input type="text" name="state" required readonly maxlength="100" id="id_state">
+                    <div class="address-group">
+                        <label>Bairro</label>
+                        <input type="text" name="neighborhood" placeholder="Bairro" id="id_neighborhood" maxlength="200">
                     </div>
                 </div>
-                <div class="select-container">
-                    <div class="type-address-container">
-                        <div class="labels">{{ form_add_address.type_address.label}}</div>
-                        {{ form_add_address.type_address }}
+                <div class="block-address">
+                    <div class="address-group">
+                        <label>Cidade</label>
+                        <input type="text" name="city" placeholder="Cidade" id="id_city" readonly maxlength="100">
                     </div>
-                    <div class="principal-address-container">
+                    <div class="address-group">
+                        <label>Estado</label>
+                        <input type="text" name="state" placeholder="UF" id="id_state" readonly maxlength="100">
+                    </div>
+                </div>
+                <div class="block-address">
+                    <div class="combobox-select">
+                        <label>Este é o seu trabalho ou sua casa?</label>
+                        <select name="type_address" id="id_type_address" required>
+                            <option value="">Casa</option>
+                            <option value="">Trabalho</option>
+                            <option value="">Outro</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="block-address">
+                    <div class="checkbox-address">
                         <label>Marcar como endereço principal?</label>
-                        {{ form_add_address.active }}
+                        <input type="checkbox" name="active" id="id_active">
                     </div>
                 </div>
-                <button type="submit" id="btn-save-address">Salvar</button>
+                <div class="btn-add-address">
+                    <button type="submit">Salvar</button>
+                </div>
             </form>
         </div>
-    </div>
+    </section>
+
 {% endblock %}
 
 {% block 'script' %}
-    $(document).ready(function(){
-        $('#id_postal_code').mask('00000-000');
-    });
+$(document).ready(function(){
+    $('#id_postal_code').mask('00000-000');
+});
 
-    $(document).ready(function() {
+$(document).ready(function() {
 
-        function limpa_formulário_cep() {
-            // Limpa valores do formulário de cep.
-            $("#id_street_address").val("");
-            $("#id_neighborhood").val("");
-            $("#id_city").val("");
-            $("#id_state").val("");
-        }
+    function limpa_formulário_cep() {
+        // Limpa valores do formulário de cep.
+        $("#id_street_address").val("");
+        $("#id_neighborhood").val("");
+        $("#id_city").val("");
+        $("#id_state").val("");
+    }
 
-        //Quando o campo cep perde o foco.
-        $("#id_postal_code").blur(function() {
+    //Quando o campo cep perde o foco.
+    $("#id_postal_code").blur(function() {
 
-            //Nova variável "cep" somente com dígitos.
-            var cep = $(this).val().replace(/\D/g, '');
+        //Nova variável "cep" somente com dígitos.
+        var cep = $(this).val().replace(/\D/g, '');
 
-            //Verifica se campo cep possui valor informado.
-            if (cep != "") {
+        //Verifica se campo cep possui valor informado.
+        if (cep != "") {
 
-                //Expressão regular para validar o CEP.
-                var validacep = /^[0-9]{8}$/;
+            //Expressão regular para validar o CEP.
+            var validacep = /^[0-9]{8}$/;
 
-                //Valida o formato do CEP.
-                if(validacep.test(cep)) {
+            //Valida o formato do CEP.
+            if(validacep.test(cep)) {
 
-                    //Preenche os campos com "..." enquanto consulta webservice.
-                    $("#id_street_address").val("...");
-                    $("#id_neighborhood").val("...");
-                    $("#id_city").val("...");
-                    $("#id_state").val("...");
+                //Preenche os campos com "..." enquanto consulta webservice.
+                $("#id_street_address").val("...");
+                $("#id_neighborhood").val("...");
+                $("#id_city").val("...");
+                $("#id_state").val("...");
 
-                    //Consulta o webservice viacep.com.br/
-                    $.getJSON("https://viacep.com.br/ws/"+ cep +"/json/?callback=?", function(dados) {
+                //Consulta o webservice viacep.com.br/
+                $.getJSON("https://viacep.com.br/ws/"+ cep +"/json/?callback=?", function(dados) {
 
-                        if (!("erro" in dados)) {
-                            //Atualiza os campos com os valores da consulta.
-                            $("#id_street_address").val(dados.logradouro);
-                            $("#id_neighborhood").val(dados.bairro);
-                            $("#id_city").val(dados.localidade);
-                            $("#id_state").val(dados.uf);
-                        } //end if.
-                        else {
-                            //CEP pesquisado não foi encontrado.
-                            limpa_formulário_cep();
-                            alert("CEP não encontrado.");
-                        }
-                    });
-                } //end if.
-                else {
-                    //cep é inválido.
-                    limpa_formulário_cep();
-                    alert("Formato de CEP inválido.");
-                }
+                    if (!("erro" in dados)) {
+                        //Atualiza os campos com os valores da consulta.
+                        $("#id_street_address").val(dados.logradouro);
+                        $("#id_neighborhood").val(dados.bairro);
+                        $("#id_city").val(dados.localidade);
+                        $("#id_state").val(dados.uf);
+                    } //end if.
+                    else {
+                        //CEP pesquisado não foi encontrado.
+                        limpa_formulário_cep();
+                        alert("CEP não encontrado.");
+                    }
+                });
             } //end if.
             else {
-                //cep sem valor, limpa formulário.
+                //cep é inválido.
                 limpa_formulário_cep();
+                alert("Formato de CEP inválido.");
             }
-        });
+        } //end if.
+        else {
+            //cep sem valor, limpa formulário.
+            limpa_formulário_cep();
+        }
     });
+});
 
 {% endblock %}

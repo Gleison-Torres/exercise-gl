@@ -7,302 +7,466 @@
         box-sizing: border-box;
     }
 
-    body {
-        font-family: sans-serif;
-        min-height: 100vh;
-        display: flex;
-        flex-direction: column;
-    }
-
-.site-content {
-    flex-grow: 1;
-}
-
-/* Navbar */
-    nav {
-        background-color: #4d004d;
-        width: 100%;
-        color: #fff;
-        position: fixed;
-        font-weight: bold;
-        display: inline-block
-    }
-
-/* Menu Navbar */
-    nav ul {
-        float: right;
-        margin-right: 40px;
-    }
-
-    nav ul li {
-        display: inline-block;
-        margin: 10px;
-        padding: 15px;
-    }
-
-    nav a {
-        color: #fff;
-    }
-
-/* Ícone Navbar */
-    .fa-sharp {
-        font-size: 40px;
-        padding: 15px;
-        margin-left: 50px;
-        color: #fff;
-    }
 
 /* Mensagens */
-    .messages-container {
-        text-align: center;
-        padding: 20px;
-        background-color:red;
-    }
-
-    .fa-circle-user {
-        font-size: 35px;
-        padding: 10px;
-        padding-left: 1080px;
-    }
 
     .message-success {
-        margin-top: 0px;
+        top: 68px;
+        width:100%;
+        z-index:1;
+        position: absolute;
         text-align: center;
-        background-color: #4dff4d;
+        background-color: hsl(120, 94%, 65%, 0.7);
         color: black;
         padding: 20px;
         font-weight: bold;
+        display: block;
+        box-shadow: 0px 0px 12px 0px rgb(110, 93, 93);
 
     }
 
     .message-error {
-        margin-top: 0px;
+        z-index:1;
+        top: 68px;
+        width:100%;
+        position: absolute;
         text-align: center;
-        background-color: #ff1a1a;
+        background-color:rgb(255, 26, 26, 0.7);
+        box-shadow: 0px 0px 12px 0px rgb(110, 93, 93);
         color: #fff;
         padding: 20px;
         font-weight: bold;
     }
 
     .message-info {
-        margin-top: 0px;
+        z-index:1;
+        top: 68px;
+        position: absolute;
+        width:100%;
+        box-shadow: 0px 0px 12px 0px rgb(110, 93, 93);
         text-align: center;
-        background-color: #1a1aff;
+        background-color: rgb(31, 31, 245, 0.8);
         color: #fff;
         padding: 20px;
         font-weight: bold;
     }
 
 /* Formulário de cadastro */
-    .container-edit-profile {
-        width: 40%;
-        background-color:#F0FFFF;
-        margin:0 auto;
-        margin-top:150px;
-        margin-bottom:220px;
-        padding: 60px;
-        border-radius: 20px;
-        box-shadow: 0px 0px 10px 0px black;
+/* Register */
+    .section-register {
+        background-color: aliceblue;
+        padding-bottom: 110px;
+        padding-top: 130px;
+        text-align: left;
     }
 
-    #id_username {
-        width:52%;
-        padding: 5px;
-        border-radius:10px;
-        margin-left:36px;
+    .section-register form {
+        width: 1120px;
+        border-radius: 30px;
+        background-color: rgb(230, 236, 241);
+        margin: 0 auto;
+        box-shadow: 0px 0px 12px 0px rgb(110, 93, 93);
+        padding-top: 50px;
+        padding-left: 80px;
     }
 
-    #id_cpf {
-        width:52%;
-        padding: 5px;
-        border-radius:10px;
-        margin-left:58px;
+
+    .section-register input {
+        display: block;
+        border-radius: 10px;
+        width: 80%;
+        height:38px;
+        padding-left: 15px;
+        margin-top:10px;
     }
 
-    hr {
+    .form-group {
+        display: flex;
+        padding: 0px 20px 0px 20px;
+    }
+
+
+    .form-group-col1, .form-group-col2 {
+        width: 50%;
+    }
+
+    .helptext-container {
+        padding-left: 25px;
+        margin-top: 50px;
+    }
+
+
+    /*Button register*/
+    .btn-register-container {
+        padding-bottom: 90px;
+        padding-top: 20px;
+        text-align: center;
+        width: 90%;
         margin-top: 30px;
-        margin-bottom:10px;
     }
 
-    #id_password {
-        width:44%;
+
+    .btn-register-container button {
         padding: 5px;
-        border-radius:10px;
-        margin-left:90px;
-        margin-top:15px;
+        width: 120px;
+        border-radius: 10px;
     }
 
-    #id_confirm_password {
-        width:44%;
-        padding: 5px;
-        border-radius:10px;
-        margin-left:18px;
+    .error-messages {
+        color: red;
+        list-style-type:georgian;
+    }
+
+
+    /*Mobile*/
+    @media (min-width: 280px) and (max-width: 374px){
+        .section-register form {
+            width: 100%;
+            height: 172vh;
+            border-radius: 30px;
+            background-color: aliceblue;
+            box-shadow: none;
+            padding-left: 10px;
+            padding-top: 5px;
+        }
+
+        .section-register input {
+            border-radius: 10px;
+            width: 220px;
+        }
+
+        .form-group {
+            display: block;
+        }
+
+        .form-group-col2 {
+            padding-top: 15px;
+        }
+
+        .helptext-container {
+            margin-top: 50px;
+            margin-right: 20px;
+        }
+
+        .error-messages {
+            color: red;
+            list-style-type:georgian;
+            width:230px;
+        }
+    }
+
+
+    @media (min-width: 375px) and (max-width: 911px){
+        .section-register form {
+            width: 100%;
+            height: 161vh;
+            border-radius: 30px;
+            background-color: aliceblue;
+            box-shadow: none;
+            padding-left: 10px;
+            padding-top: 5px;
+        }
+
+        .section-register input {
+            border-radius: 10px;
+            width: 320px;
+        }
+
+        .form-group {
+            display: block;
+        }
+
+        .form-group-col2 {
+            padding-top: 15px;
+        }
+
+        .helptext-container {
+            margin-top: 50px;
+            margin-right: 20px;
+        }
+
+        .error-messages {
+            color: red;
+            list-style-type:georgian;
+            width:330px;
+        }
+    }
+
+    @media (min-width: 912px) and (max-width: 1023px){
+        .section-register form {
+            width: 100%;
+            height: 75vh;
+            border-radius: 30px;
+            background-color: aliceblue;
+            box-shadow: none;
+            padding-left: 10px;
+            padding-top: 5px;
+        }
+
+        .section-register input {
+            border-radius: 10px;
+            width: 320px;
+        }
+
+        .form-group {
+            display: block;
+        }
+
+        .form-group-col2 {
+            padding-top: 15px;
+        }
+
+        .helptext-container {
+            margin-top: 50px;
+            margin-right: 20px;
+        }
+    }
+
+    @media (min-width: 1024px) and (max-width: 1279px) {
+        .section-register form {
+            width: 100%;
+            height: 105vh;
+            border-radius: 30px;
+            background-color: aliceblue;
+            box-shadow: none;
+            padding-left: 10px;
+            padding-top: 5px;
+        }
     }
 
 /* Formulário de login*/
+
+/* Login */
+    .section-login {
+        background-color: aliceblue;
+        padding-bottom: 110px;
+        padding-top: 130px;
+    }
+
+
     .login-container {
-        background-color: #F0FFFF;
-        color: #000000;
-        width: 387px;
-        margin: 0 auto;
-        margin-top: 150px;
-        padding: 65px;
+        width: 400px;
         border-radius: 30px;
-        label: 10px;
-        font-weight: bold;
-        margin-bottom: 150px;
-        box-shadow: 0px 0px 10px 0px black;
+        background-color: rgb(230, 236, 241);
+        font-family:Arial, Helvetica, sans-serif;
         text-align: center;
+        margin: 0 auto;
+        box-shadow: 0px 0px 12px 0px rgb(110, 93, 93)
 
     }
 
-    .labels-login {
-        padding:15px;
+
+    /* Input login */
+    .input-login {
+        width: 100%;
+        height: 160px;
+        padding-top: 88px;
+        border-radius: 20px 20px 0 0;
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+    }
+
+    .input-login label {
+        display: block;
     }
 
     .input-login input {
-        width: 260px;
+        width: 65%;
+        height: 38px;
         border-radius: 10px;
-        padding: 10px;
+        padding-left: 20px;
     }
 
-    .forget-password-container {
-        text-align: left;
-        margin-top: 15px;
-        margin-left: 6px;
+    /*End input login*/
+
+    /* Input Password */
+    .input-password {
+        width: 100%;
+        height: 110px;
+        padding-top: 13px;
+        position: relative;
     }
 
+    .input-password input {
+        width: 65%;
+        height: 38px;
+        border-radius: 10px;
+        padding-left: 20px;
+        padding-right: 65px;
+    }
 
-    #forget-password {
-        color:blue;
-        text-decoration: underline;
-        font-weight:normal;
+    .input-password i {
+        font-size: 30px;
+        position: absolute;
+        right: 89px;
+        top:49px;
+        cursor: pointer;
+        color: rgb(153, 174, 197);
+    }
+
+    .input-password label {
+        display: block;
+    }
+
+    .input-password a {
+        display: block;
+        width: 180px;
+        padding-top: 10px;
+        position: relative;
+        left: 107px;
+    }
+
+    .btn-send {
+        padding-bottom: 30px;
+        padding-top: 20px;
+        padding-bottom:70px;
+    }
+
+    .btn-send button {
+        padding: 5px;
+        width: 120px;
+        border-radius: 10px;
+    }
+
+    /* Mobile*/
+    @media (min-width: 280px) and (max-width: 359px) {
+        .login-container {
+            width: 270px;
+            box-shadow: none;
+            background-color: aliceblue;
+        }
+
+        .input-password a {
+            left: 37px;
+        }
+
+        .input-login input {
+            width: 95%;
+
+        }
+
+        .input-password input {
+            width: 95%;
+
+        }
+
+        .input-password i {
+            right: 20px;
+            color: white;
+        }
+    }
+
+    @media (min-width: 360px) and (max-width: 1280px) {
+        .login-container {
+            width: 350px;
+            box-shadow: none;
+            background-color: aliceblue;
+        }
+
+        .input-password i {
+            right: 73px;
+            color: white;
+        }
+
+        .input-password a {
+            left: 80px;
+        }
     }
 /* Formulário de logout */
 
-.logout-container {
-    background-color: #4d004d;
-    color: #fff;
-    margin: 0 auto;
-    margin-top: 180px;
-    width: 400px;
-    padding: 40px;
-    border-radius: 30px;
-    text-align: center;
-    margin-bottom: 130px;
-}
-
-
-/* Botões */
-    .btn-register {
-        width: 110px;
-        padding: 9px;
-        border-radius: 10px;
-        margin-top: 40px;
-        margin-left: 250px;
-        font-weight: bold;
+    .section-logout {
+        background-color: aliceblue;
+        padding-bottom: 110px;
+        padding-top: 170px;
     }
 
-    .btn-login {
-        width: 110px;
-        padding: 9px;
-        border-radius: 10px;
-        margin-top: 40px;
-        margin-left: 4px;
-        font-weight: bold;
+    .logout-container {
+        width: 450px;
+        height: 35vh;
+        border-radius: 30px;
+        background-color: rgb(230, 236, 241);
+        font-family:Arial, Helvetica, sans-serif;
+        text-align: center;
+        margin: 0 auto;
+        box-shadow: 0px 0px 12px 0px rgb(110, 93, 93);
     }
 
-    #btn-logout {
-        padding: 10px;
-        cursor: pointer;
-        width: 60px;
-        border-radius: 10px;
+    .logout-container h1 {
+        width: 60%;
+        position: relative;
+        margin: auto;
+        top: 80px;
     }
-
-    #btn-back {
-        padding: 10px;
-        cursor: pointer;
-        width: 60px;
-        border-radius: 10px;
-    }
-
-    .btn-logout-container {
-        margin-right: 100px;
-    }
-
 
     .form-container {
-        display: inline-flex;
-        padding:20px;
-        margin-top: 20px;
-
+        display: flex;
+        margin-top: 120px;
     }
-/* Footer */
-
-.footer-container {
-    background-color: #4d004d;
-    color: #fff;
-    height: 100%;
-}
-
-.content-footer {
-    background-color: #4d004d;
-    padding: 70px;
-}
-
-footer a {
-    color:#fff;
-    text-decoration: underline;
-}
-
-/* Erros */
-
-.form-profile-errors {
-    color: red;
-    margin-left:105px;
-}
-
-.form-password-errors {
-    color: red;
-    margin-left:155px;
-}
 
 
+    .logout-container form {
+        width: 50%;
+        height: 40px;
+    }
 
-/* Input password */
-.input-login-password {
-    border: .2px solid;
-    max-width: 640px;
-    margin: 0 auto;
-    border-radius: 10px;
-    position: relative;
-    transition: 300ms ease-in-out;
-    background: #fff;
+    .logout-container button {
+        padding: 5px;
+        width: 120px;
+        border-radius: 10px;
+    }
 
-}
+    #btn-yes {
+        margin-left: 50px ;
+    }
 
-#pass {
-    border: none;
-    background: none;
-    outline: none;
-    width: 190px;
-    height:30px;
+    #btn-no {
+        margin-right: 60px;
+    }
 
-}
+    /* Mobile logout */
+    @media (min-width:280px) and (max-width: 1024px) {
+        .logout-container {
+            width: 270px;
+            height: 45vh;
+            box-shadow: none;
+            background-color: aliceblue;
+        }
+
+        .logout-container h1 {
+            width: 60%;
+            position: relative;
+            margin: auto;
+            top: 80px;
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .form-container {
+            display: flex;
+            margin-top: 120px;
+        }
 
 
-#eye {
-    border: none;
-    background: none;
-    outline: none;
-    border-radius:10px;
-    cursor: pointer;
+        .logout-container form {
+            width: 50%;
+            height: 40px;
+        }
 
-}
+        .logout-container button {
+            padding: 5px;
+            width: 80px;
+            border-radius: 10px;
+        }
 
-.fa-eye {
-    color: #000000;
-    font-size: 23px;
-    margin-top:7px;
+        #btn-yes {
+            margin-left: 20px ;
+        }
 
-}
+        #btn-no {
+            margin-right: 10px;
+        }
+    }
+
+
+
+
+

@@ -14,8 +14,13 @@ def my_profile(request):
 
 @login_required(login_url='login')
 def my_address(request):
-    address = models.AddressUser.objects.filter(user=request.user)
-    return render(request, 'my_address.html', {'address': address})
+
+    context = {
+        'active_address': models.AddressUser.objects.filter(user=request.user, active=True),
+        'other_address': models.AddressUser.objects.filter(user=request.user, active=False)
+    }
+
+    return render(request, 'my_address.html', context)
 
 
 @login_required(login_url='login')

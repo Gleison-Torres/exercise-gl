@@ -1,92 +1,88 @@
 <!DOCTYPE html>
 {% load static %}
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
-          integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
-          crossorigin="anonymous" referrerpolicy="no-referrer" />
-
-    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="{% static 'css/style_home.css' %}">
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
     <link rel="stylesheet" href="{% static 'css/my_profile.css' %}">
 
     <title>{% block 'title' %}{% endblock %}</title>
 </head>
 <body>
 
-    <!--Navbar-->
+    <!--- Navbar --->
     <nav>
-        <a href="{% url 'home' %}"><i class="fa-sharp fa-solid fa-landmark"></i></a>
-
-        <ul>
-            {% if user.is_authenticated %}
-            <li>
-                <a href="#">{{user}}</a>
-            </li>
-            <li>
-                <a href="{% url 'profile' %}">Meu cadastro</a>
-            </li>
-            <li>
-                <a href="{% url 'logout' %}">Sair</a>
-            </li>
-            {% else %}
-            <li>
-                <a href="{% url 'login' %}">
-                    Entrar
-                </a>
-            </li>
-            <li>
-                <a href="{% url 'register' %}">
-                    Cadastrar
-                </a>
-            </li>
-            {% endif %}
-
-        </ul>
-        {% if messages %}
-            {% for message in messages %}
-            <div class="messages {{message.tags}}">
-                <span>{{ message }}</span>
-            </div>
-            {% endfor %}
-        {% endif %}
+        <div class="content-navbar">
+            <a href="{% url 'home' %}"><i class="fa-sharp fa-solid fa-globe"></i></a>
+            <ul>
+                <li id="menu-mobile"><i onclick="showMenu()" class="fas fa-bars"></i></li>
+                {% if user.is_authenticated %}
+                <li><a href="#">{{user}}</a></li>
+                <li><a href="{% url 'profile' %}">Meu cadastro</a></li>
+                <li><a href="{% url 'logout' %}">Sair</a></li>
+                {% else %}
+                <li><a href="{% url 'login' %}">Entrar</a></li>
+                <li><a href="{% url 'register' %}">Cadastrar</a></li>
+                {% endif %}
+            </ul>
+        </div>
     </nav>
-    <!--End Navbar-->
-
-    <!--Content-->
-    <div class="site-content">
-        {% block 'content' %}
-
-        {% endblock %}
+    <div id="itens">
+        <ul>
+            <li id="close-menu"><i onclick="closeMenu()" class="fa-solid fa-x"></i></li>
+            {%  if user.is_authenticated %}
+            <li id="register"><a href="{% url 'profile' %}">Meu cadastro</a></li>
+            <li id="exit"><a href="{% url 'logout' %}">Sair</a></li>
+            {% else %}
+            <li id="login"><a href="{% url 'login' %}">Entrar</a></li>
+            <li id="create_account"><a href="{% url 'register' %}">Cadastrar</a></li>
+            {% endif %}
+        </ul>
     </div>
-    <!--End content-->
+'   <!--- End Navbar --->
 
+    <!--- Messages --->
+    {% if messages %}
+        {% for message in messages %}
+        <div class="messages {{message.tags}}">
+            <span>{{ message }}</span>
+        </div>
+        {% endfor %}
+    {% endif %}
+    <!--- End Messages --->
 
-    <script src="{% static 'js/jquery-3.6.3.min.js' %}"></script>
+    <!--- Content --->
+    {% block 'content' %}
+
+    {% endblock %}
+    <!--- End content --->
+
+    <!--- Footer --->
+    <footer>
+        <h1>Rodapé</h1>
+    </footer>
+    <!--- End footer --->
+
+    <!--- Scripts --->
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
     <script src="{% static 'js/jquery.mask.min.js' %}"></script>
-    <script src="{% static 'js/alert.js' %}"></script>
+    <script src="{% static 'js/script_messages.js' %}"></script>
+    <script src="{% static 'js/script_show_password.js' %}"></script>
+    <script src="{% static 'js/cpf_mask.js' %}"></script>
+    <script src="{% static 'js/phone_mask.js' %}"></script>
+    <script src="{% static 'js/mobile.js' %}"></script>
+    <script src="{% static 'js/tabs-profile.js' %}" ></script>
+    <script src="{% static 'js/del-address.js' %}" ></script>
     <script>{% block 'script' %}{% endblock %}</script>
-    <script>
-        $().ready(function() {
-            setTimeout(function () {
-                $('.messages').hide();
-            }, 2500);
-        });
-    </script>
-
-    <!--Footer-->
-    <div class="footer-container">
-        <footer>
-            <div class="content-footer">
-                <p>Developer: Gleison torres</p>
-                <br>
-                <p>Github: <a href="https://github.com/Gleison-Torres" TARGET="_blank">Gleison-Torres</a></p>
-                <br>
-                <a href="https://www.linkedin.com/in/gleison-de-torres-loiola-a782051a2/" target="_blank">LinkedIn</a>
-            </div>
-        </footer>
-    </div>
-    <!--End footer-->
+    <!--- End scripts --->
 </body>
 </html>
+
+
+
+

@@ -3,71 +3,137 @@
 {% block 'title' %}Endereços{% endblock %}
 
 {% block 'content' %}
-    <div class="address-container">
-        <div class="my-address">
-            {% if address %}
-                <table border="1" class="table-container">
-                    <thead class="header-address">
-                        <tr>
-                            <th>Nome (Destinatário)</th>
-                            <th class="cep-table">CEP</th>
-                            <th>Rua/Avenida</th>
-                            <th class="number-table">Número</th>
-                            <th>Complemento</th>
-                            <th>Cidade</th>
-                            <th class="state-table">UF</th>
-                            <th class="type-table">Endereço</th>
-                            <th>Endereço principal</th>
-                            <th>Gerenciar</th>
-                        </tr>
-                    </thead>
-                    {% for ad in address %}
-                    <tbody>
-                        <tr>
-                            <td>{{ ad.sender_name }}</td>
-                            <td class="cep-table">{{ ad.postal_code }}</td>
-                            <td>{{ ad.street_address }}</td>
-                            <td class="number-table">{{ ad.number_address }}</td>
-                            <td>{{ ad.additional_info }}</td>
-                            <td>{{ ad.city }}</td>
-                            <td class="state-table">{{ ad.state }}</td>
-                            <td class="type-table">{{ ad.type_address }}</td>
-                            {% if ad.active %}
-                                <td>Ativo</td>
-                            {% else %}
-                                <td>Inativo</td>
-                            {% endif %}
-                            <td class="manage-table">
-                                <div class="manage-address-container">
-                                    <div class="btn-edit">
-                                        <a href="{% url 'edit_address' ad.pk %}" id="btn-edit">
-                                            <i title="Editar endereço" class="fa-regular fa-pen-to-square"></i>
-                                        </a>
-                                    </div>
-                                    <div class="btn-delete">
-                                        <form class="delete-address" method="post" action="{% url 'delete_address' ad.pk %}">{% csrf_token %}
-                                            <button onclick="raiseAlert()" id="btn-delete">
-                                                <i title="Deletar endereço" class="fa-solid fa-trash-can"></i>
-                                            </button>
-                                        </form>
-                                    </div>
-                                </div>
-                            </td>
-                        </tr>
-                    </tbody>
-                    {% endfor %}
-                </table>
-                <div class="btn-address-container">
-                    <a href="{% url 'add_address' %}" class="btn-add-address">Add Endereço</a>
-                </div>
-            {% else %}
-                <div class="empty-list-address">
-                    <h1>Você não tem endereços cadastrados!</h1>
-                    <div class="btn-add-address-container">
-                        <a href="{% url 'add_address' %}" class="btn-add-address">Add Endereço</a>
-                    </div>
-                </div>
-            {% endif %}
+    {% if not active_address and not other_address %}
+    <section>
+        <div class="no-address">
+            <h1>Você não tem endereços cadastrados!</h1>
+            <div class="btn-add">
+                <a href="{% url 'add_address' %}">Add endereço</a>
+            </div>
         </div>
-    </div>
+    </section>
+    {% endif %}
+
+    {% if active_address or other_address %}
+    <section class="section-address">
+        <div class="address-container">
+            {% if active_address %}
+            <div class="principal-address">
+                <h1>Endereço principal</h1>
+            </div>
+            {% for ad in active_address %}
+            <div>
+                <div>
+                    <label>Nome:</label>
+                    <input type="text" value="{{ ad.sender_name }}" readonly>
+                </div>
+            </div>
+            <div>
+                <div>
+                    <label>Rua/Avenida:</label>
+                    <input type="text" value="{{ad.street_address}}" readonly>
+                </div>
+            </div>
+            <div>
+                <div>
+                    <label>Número:</label>
+                    <input type="text" placeholder="Número:" value="{{ad.number_address}}" readonly>
+                </div>
+                <div>
+                    <label>Complemento:</label>
+                    <input type="text" placeholder="N/A" value="{{ad.additional_info}}" readonly>
+                </div>
+                <div>
+                    <label>Bairro:</label>
+                    <input type="text" placeholder="Bairro:" value="{{ad.neighborhood}}" readonly>
+                </div>
+            </div>
+            <div>
+                <div>
+                    <label>Cidade:</label>
+                    <input type="text" placeholder="Cidade:" value="{{ad.city}}" readonly>
+                </div>
+                <div>
+                    <label>Estado:</label>
+                    <input type="text" placeholder="UF:" value="{{ad.state}}" readonly>
+                </div>
+                <div>
+                    <label>CEP:</label>
+                    <input type="text"  value="{{ad.postal_code}}" readonly>
+                </div>
+            </div>
+            <div class="manage-container">
+                <div class="btn-edit">
+                    <a href="#"><i title="Editar dados" class="fa-regular fa-pen-to-square"></i></a>
+                </div>
+                <form class="delete-address" method="post" action="{% url 'delete_address' ad.pk %}">{% csrf_token %}
+                    <button type="submit">
+                        <i title="Deletar endereço" class="fa-solid fa-trash-can"></i>
+                    </button>
+                </form>
+            </div>
+            <hr>
+            {% endfor %}
+            {% endif %}
+            {% if other_address %}
+            <div class="other-addresses">
+                <h1>Outros endereços</h1>
+            </div>
+            {% for ad in other_address %}
+            <div>
+                <div>
+                    <label>Nome:</label>
+                    <input type="text" value="{{ad.sender_name}}" readonly>
+                </div>
+            </div>
+            <div>
+                <div>
+                    <label>Rua/Avenida:</label>
+                    <input type="text" placeholder="Rua/Avenida:" value="{{ad.street_address}}" readonly>
+                </div>
+            </div>
+            <div>
+                <div>
+                    <label>Número:</label>
+                    <input type="text" placeholder="Número:" value="{{ad.number_address}}" readonly>
+                </div>
+                <div>
+                    <label>Complemento:</label>
+                    <input type="text" placeholder="N/A" value="{{ad.additional_info}}" readonly>
+                </div>
+                <div>
+                    <label>Bairro:</label>
+                    <input type="text" placeholder="Bairro:" value="{{ad.neighborhood}}" readonly>
+                </div>
+            </div>
+            <div>
+                <div>
+                    <label>Cidade:</label>
+                    <input type="text" placeholder="Cidade:" value="{{ad.city}}" readonly>
+                </div>
+                <div>
+                    <label>Estado:</label>
+                    <input type="text" placeholder="UF:" value="{{ad.state}}" readonly>
+                </div>
+                <div>
+                    <label>CEP:</label>
+                    <input type="text"  value="{{ad.postal_code}}" readonly>
+                </div>
+            </div>
+            <div class="manage-container">
+                <div class="btn-edit">
+                    <a href="#"><i title="Editar dados" class="fa-regular fa-pen-to-square"></i></a>
+                </div>
+                <form class="delete-address" method="post" action="{% url 'delete_address' ad.pk %}">{% csrf_token %}
+                    <button type="submit">
+                        <i title="Deletar endereço" class="fa-solid fa-trash-can"></i>
+                    </button>
+                </form>
+            </div>
+            <hr>
+            {% endfor %}
+        </div>
+        {% endif %}
+    {% endif %}
+    </section>
 {% endblock %}

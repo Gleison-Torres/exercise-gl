@@ -76,7 +76,6 @@ def login_create(request):
             messages.error(request, 'Usuário ou senha incorretos!')
             return redirect('login')
     else:
-        print('Erro no formulário!')
         messages.info(request, 'Algo deu errado, Tente novamente!')
         return redirect('login')
 

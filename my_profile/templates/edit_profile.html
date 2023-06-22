@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 
 {% block 'content' %}
-    <div class="container-edit-profile">
+    <section class="container-edit-profile">
         <form action="{% url 'edit_profile' data_profile.pk %}" method="post">{% csrf_token %}
             <div class="form-group">
                 <label>Nome</label>
@@ -27,7 +27,7 @@
                 <button type="submit" id="btn-alter-profile">Atualizar</button>
             </div>
         </form>
-    </div>
+    </section>
 {% endblock %}
 
 {% block 'script' %}

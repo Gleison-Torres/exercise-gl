@@ -4,35 +4,33 @@
 
 
 {% block 'content' %}
-    <div class="profile-container">
-        <div class="my-profile">
-            <i class="fa-solid fa-user"></i>
-            <div class="user">
+
+<!-- Menu -->
+    <section class="section-profile">
+        <div class="profile-container">
+            <div class="username-container">
+                <i class="fa-solid fa-user"></i>
                 <h1>{{ user }}</h1>
             </div>
-        </div>
 
-        <div class="user-info">
-            <div class="info">
-                <a href="{% url 'info' %}" >
+            <div class="my-info-container">
+                <a href="{% url 'info' %}">
                     <i class="fa-sharp fa-solid fa-address-card"></i>
-                    <div class="info-button">
-                        <h1>Meus dados</h1>
-                    </div>
+                    <h1>Meus dados</h1>
                 </a>
             </div>
-        </div>
 
-        <div class="user-address">
-            <div class="info-address">
-                <a href="{% url 'address' %}" >
+            <div class="my-address-container">
+                <a href="{% url 'address' %}">
                     <i class="fa-solid fa-location-dot"></i>
-                    <div class="address-button">
-                        <h1>Endereços</h1>
-                    </div>
+                    <h1>Endereços</h1>
                 </a>
             </div>
+
         </div>
-    </div>
+    </section>
+
+<!--Menu final-->
+
 {% endblock %}
 
