@@ -69,8 +69,9 @@
     <!--- End footer --->
 
     <!--- Scripts --->
-    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js" integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous"></script>
     <script src="{% static 'js/jquery.mask.min.js' %}"></script>
+    <script src="{% static 'js/cep-api.js' %}"></script>
     <script src="{% static 'js/script_messages.js' %}"></script>
     <script src="{% static 'js/script_show_password.js' %}"></script>
     <script src="{% static 'js/cpf_mask.js' %}"></script>
@@ -79,6 +80,7 @@
     <script src="{% static 'js/tabs-profile.js' %}" ></script>
     <script src="{% static 'js/del-address.js' %}" ></script>
     <script>{% block 'script' %}{% endblock %}</script>
+
     <!--- End scripts --->
 </body>
 </html>
