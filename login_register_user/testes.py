@@ -1,5 +1,2 @@
-num = False
-
-var = '   '
-
-print(var.isspace())
+for n in range(0, 11, 2):
+    print(n)

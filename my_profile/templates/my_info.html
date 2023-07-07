@@ -45,43 +45,45 @@
 
             <div id="address" class="content">
                 {% if address %}
+                {% for ad in address %}
                 <div id="street" class="info-group">
                     <div>
                         <label>Rua/Avenida</label>
-                        <input type="text" value="" readonly>
+                        <input type="text" value="{{ ad.street_address }}" readonly>
                     </div>
                 </div>
                 <div class="info-group">
                     <div>
                         <label>Número</label>
-                        <input type="text" placeholder="Número" value="19" readonly>
+                        <input type="text" placeholder="Número" value="{{ ad.number_address }}" readonly>
                     </div>
                     <div>
                         <label>Complemento</label>
-                        <input type="text" placeholder="Complemento" value="A" readonly>
+                        <input type="text" placeholder="Complemento" value="{{ ad.additional_info }}" readonly>
                     </div>
                     <div>
                         <label>Bairro</label>
-                        <input type="text" placeholder="Bairro" value="JD Irene/Guaianases" readonly>
+                        <input type="text" placeholder="Bairro" value="{{ ad.neighborhood}}" readonly>
                     </div>
                 </div>
                 <div class="info-group">
                     <div>
                         <label>Cidade</label>
-                        <input type="text" placeholder="Cidade" value="São Paulo" readonly>
+                        <input type="text" placeholder="Cidade" value="{{ ad.city }}" readonly>
                     </div>
                     <div>
                         <label>Estado</label>
-                        <input type="text" placeholder="UF" value="SP" readonly>
+                        <input type="text" placeholder="UF" value="{{ ad.state }}" readonly>
                     </div>
                     <div>
                         <label>CEP</label>
-                        <input type="text" placeholder="CEP" value="08290-680" readonly>
+                        <input type="text" placeholder="CEP" value="{{ ad.postal_code }}" readonly>
                     </div>
                 </div>
                 <div class="edit-container">
-                    <a href="#"><i title="Editar dados" class="fa-regular fa-pen-to-square"></i></a>
+                    <a href="{% url 'edit_address' ad.pk %}"><i title="Editar dados" class="fa-regular fa-pen-to-square"></i></a>
                 </div>
+                {% endfor %}
                 {% else %}
                 <div class="info-address">
                     <h1>Você ainda não tem um endereço principal cadastrado!</h1>
@@ -95,7 +97,3 @@
     </section>
 {% endblock %}
 
-{% block 'script' %}
-
-
-{% endblock %}

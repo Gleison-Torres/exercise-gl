@@ -28,12 +28,14 @@ def add_address(request):
     if request.method == 'POST':
         form_add_address = forms.AddressForm(request.POST)
         if form_add_address.is_valid():
+            print('formulario valido')
             pre_save_address = form_add_address.save(commit=False)
             pre_save_address.user = request.user
             pre_save_address.save()
             messages.success(request, 'Endereço cadastrado com sucesso!')
             return redirect('address')
         else:
+            print('formulario invalido')
             return render(request, 'add_address.html')
 
     return render(request, 'add_address.html', {'form_add_address': forms.AddressForm})
