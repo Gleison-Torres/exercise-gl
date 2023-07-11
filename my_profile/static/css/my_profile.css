@@ -750,3 +750,87 @@
 
     }
 
+/* Password change */
+
+.password-change-container form {
+    padding:30px;
+    width:50%;
+    margin: 0 auto;
+    margin-top: 100px;
+    border: none;
+    border-radius: 20px;
+    box-shadow: 0px 0px 12px 0px rgb(110, 93, 93);
+    background-color: rgb(230, 236, 241);
+}
+
+
+.form-group {
+    display:block;
+}
+
+
+.message-error-password {
+    color: red;
+}
+
+
+.form-group input {
+    padding-left: 20px;
+    margin-left: 20px;
+    width:60%;
+    height:35px;
+    border-radius:10px;
+
+}
+
+
+.btn-alterar-container {
+    text-align: center;
+    padding:10px;
+
+}
+
+#btn-alterar {
+    width:100px;
+    border-radius:10px;
+}
+
+@media (max-width: 950px) {
+    .password-change-container form {
+        padding:0px;
+        width:100%;
+        border: none;
+        box-shadow: none;
+        margin-bottom: 80px;
+    }
+
+
+    .messages-help-text {
+        padding-top: 20px;
+        width: 90%;
+        margin: 0 auto;
+        font-weight: bold;
+    }
+
+
+    .form-group input {
+        margin-left: 0px;
+        width:100%;
+    }
+
+    .btn-alterar-container {
+        margin-top: 40px;
+    }
+
+    #btn-alterar {
+        width:200px;
+        height:40px;
+    }
+}
+
+@media (min-height: 600px) and (max-height:800px) {
+    .password-change-container form {
+        margin-bottom: 90px;
+    }
+
+}
