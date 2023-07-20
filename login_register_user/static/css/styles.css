@@ -74,7 +74,6 @@
     .section-register input {
         display: block;
         border-radius: 10px;
-        width: 80%;
         height:38px;
         padding-left: 15px;
         margin-top:10px;
@@ -88,6 +87,15 @@
 
     .form-group-col1, .form-group-col2 {
         width: 50%;
+    }
+
+    .form-group input {
+        padding-left: 20px;
+        margin-left: 20px;
+        width:80%;
+        height:35px;
+        border-radius:10px;
+
     }
 
     .helptext-container {
@@ -139,6 +147,11 @@
             display: block;
         }
 
+         .form-group input {
+            margin-left: 0px;
+            width: 200%;
+        }
+
         .form-group-col2 {
             padding-top: 15px;
         }
@@ -176,6 +189,10 @@
             display: block;
         }
 
+        .form-group input {
+            margin-left: 0px;
+            width:200%;
+        }
         .form-group-col2 {
             padding-top: 15px;
         }
@@ -209,7 +226,7 @@
         }
 
         .form-group {
-            display: block;
+            display: ;
         }
 
         .form-group-col2 {

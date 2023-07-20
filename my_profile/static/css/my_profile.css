@@ -728,7 +728,7 @@
         border-radius:10px;
     }
 
-    #id_cpf {
+    #cpf {
         cursor: not-allowed;
         background-color: rgb(218, 217, 217);
     }
@@ -764,9 +764,10 @@
 }
 
 
-.form-group {
-    display:block;
-}
+/*.form-group {
+    display:flex;
+    background:red;
+}*/
 
 
 .message-error-password {
@@ -774,14 +775,14 @@
 }
 
 
-.form-group input {
+/*.form-group input {
     padding-left: 20px;
     margin-left: 20px;
     width:60%;
     height:35px;
     border-radius:10px;
 
-}
+}*/
 
 
 .btn-alterar-container {
@@ -810,12 +811,6 @@
         width: 90%;
         margin: 0 auto;
         font-weight: bold;
-    }
-
-
-    .form-group input {
-        margin-left: 0px;
-        width:100%;
     }
 
     .btn-alterar-container {

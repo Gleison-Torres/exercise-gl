@@ -4,7 +4,6 @@ from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
 from django.http import Http404
 from . import forms, models
-from django.contrib.auth import views
 
 
 def register_user(request):
